@@ -1,0 +1,149 @@
+$colorTheme: gray;
+$colorText: white;
+$font1: "Quicksand", sans-serif;
+@mixin setting {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+@mixin button {
+  color: white;
+  background-color: rgb(223, 223, 111);
+  border: none;
+}
+html {
+  input,
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
+.App {
+  .NavBar {
+    z-index: 121;
+    @include setting;
+    background-color: $colorTheme;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    height: auto;
+    font-size: 20px;
+    button {
+      position: absolute;
+      right: 5px;
+      top: 9px;
+      display: none;
+      height: 30px;
+      color: black;
+    }
+
+    .show,
+    form {
+      animation: showup 0.3s forwards;
+      margin-top: 4px;
+      .input#search {
+        height: 30px;
+        border: none;
+        border-radius: 3px;
+        text-align: center;
+      }
+      .input#btn {
+        height: 30px;
+        color: black;
+        border: none;
+        margin-left: 3px;
+        border-radius: 1px;
+        cursor: pointer;
+        @include button;
+      }
+    }
+    @media only screen and (orientation: portrait) {
+      flex-direction: column;
+      justify-content: space-around;
+
+      min-height: 50px;
+      button {
+        display: block;
+        z-index: 1212;
+        @include button;
+      }
+      form.hide {
+        display: none;
+      }
+    }
+
+    .links {
+      margin-left: 33px;
+      ul {
+        @include setting;
+        li {
+          @include setting;
+          color: $colorText;
+          display: inline-block;
+          clear: none;
+          margin-right: 13px;
+          cursor: pointer;
+          font-family: $font1;
+        }
+        li:hover {
+          border-bottom: 1px solid orange;
+        }
+      }
+    }
+  }
+  .main {
+    @include setting;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+
+    .SidePanel {
+      width: 15vw;
+      @include setting;
+      background-color: green;
+      height: 100vh;
+    }
+    .Items {
+      width: 85vw;
+      @include setting;
+      background-color: red;
+      height: 100vh;
+    }
+    @media only screen and (orientation: portrait) {
+      flex-direction: column;
+      .SidePanel {
+        height: 25vh;
+        width: 100vw;
+      }
+      .Items {
+        height: 75vh;
+        width: 100vw;
+      }
+    }
+  }
+}
+
+@keyframes showup {
+  0% {
+    height: 0px;
+
+    opacity: 0;
+  }
+  50% {
+    height: 39px;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    height: 39px;
+  }
+}
