@@ -21,17 +21,19 @@ html {
   }
 }
 .App {
+  position: absolute;
+  top:0px;
+  left:0px;
+  right:0px;
   .NavBar {
     z-index: 121;
     @include setting;
     background-color: $colorTheme;
     display: flex;
+   
     justify-content: space-between;
     align-items: center;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    left: 0px;
+    position: relative;
     height: auto;
     font-size: 20px;
     button {
@@ -61,6 +63,7 @@ html {
         border-radius: 1px;
         cursor: pointer;
         @include button;
+        margin-right: 5px;
       }
     }
     @media only screen and (orientation: portrait) {
@@ -98,11 +101,8 @@ html {
     }
   }
   .main {
+ 
     @include setting;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
     display: flex;
     flex-direction: row;
 
@@ -121,11 +121,11 @@ html {
     @media only screen and (orientation: portrait) {
       flex-direction: column;
       .SidePanel {
-        height: 25vh;
+        height: 10vh;
         width: 100vw;
       }
       .Items {
-        height: 75vh;
+        height: 90vh;
         width: 100vw;
       }
     }
