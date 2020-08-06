@@ -1,0 +1,46 @@
+@import '../../App.scss';
+.SidePanel{
+    font-family: $fontSide;
+    font-size: 12px;
+    border-right: 2px solid $themeColor;
+    @media only screen and (orientation:portrait){
+        border-bottom: 2px solid $themeColor;
+    }
+    ul{
+        
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        @media only screen and (orientation:portrait){
+            flex-direction: row;
+            border-left: none;
+           
+            flex-wrap: wrap;
+        }
+        li{
+            min-width: 60px;
+            list-style-type:none;
+            margin-left: 2px;
+            margin-top: 9px;
+            
+            text-align: left;
+            cursor: pointer;
+            @media only screen and (orientation:portrait){
+                text-align: center;
+            }
+            .checkbox{
+                display: inline-block;
+                width:11px;
+                height:11px;
+                margin-right: 4px;
+                border:1px solid $themeColor;
+                z-index: 1232;
+            }
+        }
+       
+    }
+}

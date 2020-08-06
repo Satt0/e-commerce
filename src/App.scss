@@ -1,6 +1,9 @@
 $colorTheme: gray;
 $colorText: white;
 $font1: "Quicksand", sans-serif;
+$themeColor:rgb(223, 223, 111);
+$fontItem: 'Lato', sans-serif;
+$fontSide:  'Open Sans', sans-serif;
 @mixin setting {
   padding: 0;
   margin: 0;
@@ -9,7 +12,7 @@ $font1: "Quicksand", sans-serif;
 }
 @mixin button {
   color: white;
-  background-color: rgb(223, 223, 111);
+  background-color:$themeColor ;
   border: none;
 }
 html {
@@ -85,6 +88,10 @@ html {
       margin-left: 33px;
       ul {
         @include setting;
+        
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         li {
           @include setting;
           color: $colorText;
@@ -93,6 +100,7 @@ html {
           margin-right: 13px;
           cursor: pointer;
           font-family: $font1;
+          
         }
         li:hover {
           border-bottom: 1px solid orange;
@@ -107,15 +115,16 @@ html {
     flex-direction: row;
 
     .SidePanel {
-      width: 15vw;
+      width: 10vw;
+      min-width: 100px;
       @include setting;
-      background-color: green;
+      
       height: 100vh;
     }
     .Items {
-      width: 85vw;
+      width: 95vw;
       @include setting;
-      background-color: red;
+      
       height: 100vh;
     }
     @media only screen and (orientation: portrait) {

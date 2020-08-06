@@ -1,0 +1,101 @@
+@import '../../App.scss';
+.Items{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    font-family: $fontItem;
+    font-size: 15px;
+    .ItemList{
+     
+        .main-infor{
+            overflow: hidden;
+            padding:0;
+            box-sizing: border-box;
+            margin:5px;
+            text-align: center;
+            height:140px;
+            width :100px;
+            position: relative;
+            border:1px solid gray;
+            display: inline-block;
+          
+          
+             .img{
+                padding:0;
+                margin:0;
+                border:2px solid rgb(97, 230, 97);
+                background-color: gray;
+                margin-top: 10px;
+                max-width: 60px;
+                height: 60px;
+            }
+            .img:hover{
+                transform: scale(1.3);
+                transition: all .3s;
+            }
+            h4{
+                position: absolute;
+                top:70px;
+                margin-left: 5px;
+              font-size: 13px;
+              
+               
+            }
+            .add-btn{
+                position: absolute;
+                top:115px;
+                display:block;
+               margin-left: 10px;
+               border:1px solid rgb(63, 62, 62);
+                border-radius: 2px;
+                background-color: gray;
+                color:white;
+                cursor: pointer;
+                
+                
+            }
+            .add-btn:hover{
+                animation:borderanimate 1.7s infinite;
+                transform: scale(1.1);
+            }
+        }
+        .hover-container{display: none;
+            h5{
+                color:yellow;
+                font-weight: 300;
+               
+            }
+            
+        }
+       
+    }
+    .ItemList:hover{
+        .hover-container{
+            
+            z-index: 1231;
+            position: absolute;
+            display:inline-block;
+            background-color: rgba(37, 36, 36,.9);
+            border: 1px solid white;
+            border-radius: 5px;
+            color:white;
+            width:100px;
+            text-align: center;
+        }
+        .hover-container:hover{
+            display:none;
+        }
+    }
+   
+}
+@keyframes borderanimate{
+    0%,100% {
+        border: 1px solid rgb(0, 122, 0);
+        
+    }
+    50%{
+        border:1px solid rgb(255, 255, 5);
+    }
+}
