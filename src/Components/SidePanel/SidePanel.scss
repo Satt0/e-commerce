@@ -1,10 +1,29 @@
 @import '../../App.scss';
 .SidePanel{
+    h3{
+        padding:0;
+        margin-top: 10px;
+        margin-bottom: 0;
+        margin-left: 5px;
+        line-height: 16px;
+        font-weight: bold;
+        color:$themeColor;
+        text-shadow: 1px 1px 2px gray;
+    }
     font-family: $fontSide;
     font-size: 12px;
-    border-right: 2px solid $themeColor;
+    border-right: 7px solid $themeColor;
+    border-left:2px solid $themeColor;
+    padding-left: 5px;
+    background-image: url('https://img.zing.vn/gn/images/data/000Thang12014/006/Wall5-1920x1200.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
     @media only screen and (orientation:portrait){
         border-bottom: 2px solid $themeColor;
+        border-right: none;
+        border-left: none;
     }
     ul{
         
@@ -22,15 +41,23 @@
             flex-wrap: wrap;
         }
         li{
-            min-width: 60px;
+            z-index: 123123;
+            min-width: 90px;
             list-style-type:none;
             margin-left: 2px;
             margin-top: 9px;
-            
+            color:$themeColor;
+            background-color: gray;
+            padding-right: 4px;
+            width:80%;
             text-align: left;
+            border-radius: 3px ;
             cursor: pointer;
             @media only screen and (orientation:portrait){
                 text-align: center;
+                width:auto;
+                padding:0;
+                min-width: 30px;
             }
             .checkbox{
                 display: inline-block;
@@ -39,8 +66,18 @@
                 margin-right: 4px;
                 border:1px solid $themeColor;
                 z-index: 1232;
+                pointer-events: none;
             }
         }
+        .checked{
+            border-bottom: 1px solid $themeColor;
+            .checkbox{
+           background-color: $themeColor;
+           pointer-events: none;
+        }
+        
+        }
+        
        
     }
 }

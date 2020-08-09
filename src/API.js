@@ -1,5 +1,8 @@
-const axios = require('axios').default;
-const url = "https://lit-stream-93368.herokuapp.com";
+
+// const url = "http://localhost:4000";
+const url='https://lit-stream-93368.herokuapp.com';
+
+
 const API = {
   async getItemByName(name) {
     name = name.split(" ").join("+");
@@ -12,8 +15,9 @@ const API = {
         }
       })
       .then((res) => {
-        console.log(res);
+       if (res)
        return res.item
+       else return []
       });
   },
   async getAll() {
@@ -37,7 +41,7 @@ const API = {
       
         return res.json();
       } else {
-        console.log("failed");
+        console.log("res undefinded");
       }
     })
     .then((res) => {

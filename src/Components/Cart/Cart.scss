@@ -1,0 +1,118 @@
+@import "../Items/Items.scss";
+@import '../../App.scss';
+.Cart {
+  background-image: url("https://img.zing.vn/gn/images/data/000Thang12014/0303/Wall_1920x1200.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-List {
+    width: 50vw;
+    min-width: 700px;
+    @media only screen and(orientation:portrait){
+      min-width: 89vw;
+    }
+    height: 45vh;
+    min-height: 400px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    background-color: rgba(36, 35, 35,.4);
+    &-Item {
+      border-radius: 5px;
+      background-color: white;
+
+      padding: 0;
+      box-sizing: border-box;
+      margin: 5px;
+      text-align: center;
+      height: 190px;
+      width: 120px;
+      position: relative;
+      border: 1px solid gray;
+      display: inline-block;
+      color: rgb(59, 6, 6);
+      img {
+        padding: 0;
+        margin: 0;
+        border: 2px solid rgb(97, 230, 97);
+        background-color: gray;
+        margin-top: 10px;
+        max-width: 60px;
+        height: 60px;
+      }
+      h4 {
+        margin: 0;
+      }
+      form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        label {
+          text-align: right;
+        }
+        input {
+          width: 60px;
+          border: none;
+          text-align: center;
+          border-radius: 3px;
+          background-color: rgb(204, 194, 194);
+        }
+      }
+      .price {
+        color: rgb(34, 218, 34);
+      }
+      button {
+        width: 70px;
+        border: none;
+        color: white;
+        @extend %btn;
+      }
+      button:hover {
+        @extend %temp;
+      }
+    }
+  }
+  &-Payment {
+    color: white;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    h2{
+      font-family:$font1 ;
+    }
+    button{
+      margin-left: 14px;
+      height:30px;
+      width:100px;
+      color:white;
+      background-color: green;
+      cursor: pointer;
+      @extend %btn;
+    }
+    button:hover {
+      @extend %temp;
+    }
+  }
+}
+
+@keyframes borderanimate {
+  0%,
+  100% {
+    border: 1px solid rgb(0, 122, 0);
+  }
+  50% {
+    border: 1px solid rgb(255, 255, 5);
+  }
+}

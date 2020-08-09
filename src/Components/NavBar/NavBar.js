@@ -1,7 +1,7 @@
 import React from "react";
 // 
 import Search from './Search';
-
+import NavLinks from './NavLinks'
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -21,15 +21,13 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="NavBar">
-        <div className="links">
-          <ul>
-            <li>Home</li>
-            <li>Cart</li>
-            <li>Contact</li>
-          </ul>
-        </div>
-        <button onClick={this.toggleSearch.bind(this)}>
-          {this.state.show ? "hide" : "show"}
+       
+        <NavLinks/>
+        <button onClick={this.toggleSearch.bind(this)} className={this.state.show?"have-border":''}>
+          
+          <div className={this.state.show?"hamburgur top":"hamburgur"}></div>
+          <div className={this.state.show?"hamburgur middle":"hamburgur"}></div>
+          <div className={this.state.show?"hamburgur bottom":"hamburgur"}></div>
         </button>
         <Search visibility={this.state.show}/>
       </div>

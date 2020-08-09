@@ -8,7 +8,7 @@ export default function Search(props) {
         e.preventDefault();
         console.log(refInput.current.value);
         API.getItemByName(refInput.current.value.trim()).then(res=>{
-            dispatch({type:'updateItem',payload:[res]})
+            dispatch({type:'updateItem',payload:res})
         })
     }
     return (

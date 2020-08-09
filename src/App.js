@@ -1,13 +1,33 @@
 import React from "react";
 import NavBar from "./Components/NavBar/NavBar";
 import "./App.scss";
-import SidePanel from "./Components/SidePanel/SidePanel";
-import Items from "./Components/Items/Items";
-import { useDispatch } from "react-redux";
+import LoginContainer from "./Components/Container/LoginContainer";
+import HomeContainer from "./Components/Container/HomeContainer";
+import CartContainer from "./Components/Container/CartContainer";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import API from "./API";
+
+
 const App = () => {
   const dispatch = useDispatch();
+
+  const view = useSelector((state) => state.view);
+  let currentview = <HomeContainer />;
+  switch (view) {
+    case "home":
+      currentview = <HomeContainer />;
+      break;
+    case "cart":
+      currentview = <CartContainer />;
+      break;
+    case "login":
+      currentview = <LoginContainer />;
+      break;
+    default:
+      currentview = <HomeContainer />;
+      break;
+  }
   useEffect(() => {
     API.getAll().then((res) => {
       if (res) {
@@ -20,11 +40,7 @@ const App = () => {
   return (
     <div className="App">
       <NavBar />
-
-      <div className="main">
-        <SidePanel />
-        <Items />
-      </div>
+      {currentview}
     </div>
   );
 };

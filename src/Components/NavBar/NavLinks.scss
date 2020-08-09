@@ -1,0 +1,42 @@
+@import '../../App.scss';
+.links{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  
+    .logo-container{
+        display: inline-block;
+        margin-right: 15px;
+        padding:0;
+        
+        img{
+            width:50px;
+            height:auto;
+
+        }
+    }
+    ul{
+        display: inline-block;
+         .checked{
+        border-bottom: 1px solid $themeColor;
+    }
+    li{
+        .cart-count{
+            display:inline-block;
+            text-align: center;
+            box-sizing: border-box;
+            color:rgb(255, 103, 103);
+            width:15px;
+            height:17px;
+            font-size: 12px;
+            line-height: 15px;
+            border-radius: 100%;
+            border:1px solid white;
+            box-shadow: 0px 1px 3px white;
+            
+            margin-left: 2px;
+        }
+    }
+    }
+   
+}

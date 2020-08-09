@@ -1,14 +1,14 @@
 $colorTheme: gray;
 $colorText: white;
 $font1: "Quicksand", sans-serif;
-$themeColor:rgb(223, 223, 111);
-$fontItem: 'Lato', sans-serif;
+$themeColor:#f0df4d;
+$fontItem:  'Source Sans Pro', sans-serif;
 $fontSide:  'Open Sans', sans-serif;
 @mixin setting {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  overflow: hidden;
+  
 }
 @mixin button {
   color: white;
@@ -16,6 +16,7 @@ $fontSide:  'Open Sans', sans-serif;
   border: none;
 }
 html {
+  overflow: hidden;
   input,
   button {
     -webkit-appearance: none;
@@ -25,33 +26,77 @@ html {
 }
 .App {
   position: absolute;
+  
   top:0px;
   left:0px;
   right:0px;
   .NavBar {
+  
     z-index: 121;
     @include setting;
     background-color: $colorTheme;
     display: flex;
    
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
     position: relative;
     height: auto;
     font-size: 20px;
     button {
       position: absolute;
-      right: 5px;
+     
+      right: 14px;
       top: 9px;
       display: none;
-      height: 30px;
+      min-height: 20px;
+      max-height: 50px;
       color: black;
+      border-radius: 3px;
+      width:40px;
+      .hamburgur{
+        border-bottom: 2px solid white;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        transition:all .3s;
+        
+        padding:0;
+        
+        
+      }
+      .hamburgur.top{
+        -webkit-transform: translateY(6px) rotate(28deg);
+        -ms-transform: translateY(6px) rotate(28deg);
+        -o-transform: translateY(6px) rotate(28deg);
+        transform: translateY(6px) rotate(28deg);
+      }
+      .hamburgur.middle{
+        opacity: 0;
+
+      }
+      .hamburgur.bottom{
+        -webkit-transform: translateY(-6px) rotate(-28deg);
+  -ms-transform: translateY(-6px) rotate(-28deg);
+  -o-transform: translateY(-6px) rotate(-28deg);
+  transform: translateY(-6px) rotate(-28deg);
+      }
+
+    }
+    button.have-border{
+      background-color: '';
     }
 
     .show,
     form {
-      animation: showup 0.3s forwards;
+      animation: showup .2s forwards;
       margin-top: 4px;
+     box-sizing: border-box;
+      position: relative;
+      @media only screen and (orientation:portrait){
+        width:100vw;
+      
+      margin: 2px 27% 2px 20%;
+      }
+      z-index: 12123;
       .input#search {
         height: 30px;
         border: none;
@@ -63,15 +108,17 @@ html {
         color: black;
         border: none;
         margin-left: 3px;
-        border-radius: 1px;
+        border-radius: 3px;
         cursor: pointer;
         @include button;
-        margin-right: 5px;
+        margin-right: 6px;
+
       }
     }
     @media only screen and (orientation: portrait) {
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: center;
+      align-items: flex-start;
 
       min-height: 50px;
       button {
@@ -85,7 +132,7 @@ html {
     }
 
     .links {
-      margin-left: 33px;
+      margin-left: 6px;
       ul {
         @include setting;
         
@@ -95,9 +142,10 @@ html {
         li {
           @include setting;
           color: $colorText;
-          display: inline-block;
+          display: inline-flex;
+          flex-direction: row;
           clear: none;
-          margin-right: 13px;
+          margin-right: 6px;
           cursor: pointer;
           font-family: $font1;
           
@@ -126,6 +174,10 @@ html {
       @include setting;
       
       height: 100vh;
+      background-image: url('https://img.zing.vn/gn/images/data/000Thang12014/000/T4_1_1920x1200.jpg');
+      background-position: right;
+      background-repeat: no-repeat;
+      background-size: cover;
     }
     @media only screen and (orientation: portrait) {
       flex-direction: column;
@@ -144,15 +196,16 @@ html {
 @keyframes showup {
   0% {
     height: 0px;
-
+    transform: translateX(-70px);
     opacity: 0;
   }
   50% {
     height: 39px;
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
     height: 39px;
+    transform: translateX(0);
   }
 }
