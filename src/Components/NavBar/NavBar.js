@@ -1,5 +1,6 @@
 import React from "react";
 // 
+import Button from './Button'
 import Search from './Search';
 import NavLinks from './NavLinks'
 class NavBar extends React.Component {
@@ -23,12 +24,7 @@ class NavBar extends React.Component {
       <div className="NavBar">
        
         <NavLinks/>
-        <button onClick={this.toggleSearch.bind(this)} className={this.state.show?"have-border":''}>
-          
-          <div className={this.state.show?"hamburgur top":"hamburgur"}></div>
-          <div className={this.state.show?"hamburgur middle":"hamburgur"}></div>
-          <div className={this.state.show?"hamburgur bottom":"hamburgur"}></div>
-        </button>
+        <Button show={this.state.show} toggleSearch={this.toggleSearch.bind(this)}/>
         <Search visibility={this.state.show}/>
       </div>
     );

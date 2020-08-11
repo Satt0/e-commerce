@@ -1,0 +1,60 @@
+.Login-Container {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  background-color: rgba(17, 12, 12, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .LoginUI {
+    z-index: 1231231231;
+    width: 50vw;
+    height: 40vh;
+    background-color: white;
+    animation: LoginUIanimation 0.9s;
+    .change {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      div {
+        cursor: pointer;
+        width: 50%;
+        padding: 0;
+        text-align: center;
+      }
+      div.selected {
+        border-bottom: 2px solid orange;
+      }
+    }
+    .SignUp,
+    .SignIn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .Login {
+    .UserProfile {
+    }
+  }
+}
+@keyframes LoginUIanimation {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

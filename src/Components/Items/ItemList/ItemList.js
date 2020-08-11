@@ -31,7 +31,7 @@ export default function ItemList(props) {
     <h5><span className="title-text">phẩm chất: </span>{props.item.perfection}</h5>
     <h5><span className="title-text">hiệu lực:  </span>{props.item.lastFor}</h5>
     <h5><span className="title-text">số lượng:  </span>{props.item.quantity.substring(0,10)}</h5>
-    <h5><span className="title-text">gía: </span> {props.item.price} coin</h5>
+    <h5><span className="title-text">giá: </span> {props.item.price} coin</h5>
     
             </div>
 

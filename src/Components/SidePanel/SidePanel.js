@@ -1,16 +1,16 @@
-import React,{useState} from "react";
-import {useDispatch} from 'react-redux'
+import React from "react";
+import {useDispatch,useSelector} from 'react-redux'
 import API from '../../API';
 import './SidePanel.scss';
 
 function SidePanel() {
-  const [state,setState]=useState('all')
+  const state=useSelector(state=>state.sort);
   const dispatch = useDispatch()
   function getTag(e){
     if(e.target.id!==''){
     if(state!==e.target.id)
     {
-       setState(e.target.id);
+       dispatch({type:'setSort',payload:e.target.id})
     }
   
    
@@ -24,7 +24,7 @@ API.getByTag(e.target.id).then(res=>{
    if(e.target.id!==''){
     if(state!==e.target.id)
     {
-       setState(e.target.id);
+      dispatch({type:'setSort',payload:e.target.id})
     }
     API.getAll().then(res=>{
       dispatch({type:'updateItem',payload:res})

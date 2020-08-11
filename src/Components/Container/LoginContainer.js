@@ -1,9 +1,18 @@
-import React from 'react'
-import Login from '../Login/Login'
+import React from "react";
+import Login from "../Login/Login";
+import LoginUI from "../Login/LoginUI";
+import { useSelector, useDispatch } from "react-redux";
 export default function LoginContainer() {
-    return (
-        <div className="LoginContainer">
-            <Login/>
-        </div>
-    )
+  const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.user.loggedIn);
+  
+  function onClose() {
+    dispatch({ type: "closeLoginUI" });
+  }
+  
+  return (
+    <div className="Login-Container">
+      {loggedIn ? <Login /> : <LoginUI onClose={onClose} />}
+    </div>
+  );
 }

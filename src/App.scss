@@ -23,6 +23,24 @@ html {
     -moz-appearance: none;
     appearance: none;
   }
+  input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select:focus,
+textarea {
+  font-size: 16px !important;
+}
 }
 .App {
   position: absolute;
@@ -91,6 +109,8 @@ html {
       margin-top: 4px;
      box-sizing: border-box;
       position: relative;
+   
+      overflow: hidden;
       @media only screen and (orientation:portrait){
         width:100vw;
       
@@ -98,7 +118,7 @@ html {
       }
       z-index: 12123;
       .input#search {
-        height: 30px;
+        height: 23px;
         border: none;
         border-radius: 3px;
         text-align: center;

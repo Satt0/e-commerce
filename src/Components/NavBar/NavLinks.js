@@ -4,9 +4,12 @@ import './NavLinks.scss'
 export default function NavLinks() {
     const view=useSelector(state=>state.view);
     const count=useSelector(state=>state.cart.length)
+    
      const dispatch = useDispatch();
      function setView(e){
-        dispatch({type:'setView',payload:e.target.id})
+      if (view!==e.target.id)
+      { dispatch({type:'setView',payload:e.target.id})
+       }
      }
     return (
         <div className="links">

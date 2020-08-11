@@ -29,7 +29,7 @@ export default function Item({
       <h4>{name}</h4>
       <img src={URL} alt={name} />
       <form>
-        <label for="count">count</label>
+        <label htmlFor="count">count</label>
         <input
           id="count"
           type="number"

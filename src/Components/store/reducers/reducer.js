@@ -3,7 +3,13 @@ import { combineReducers } from "redux";
 const initState = {
   items: [],
   view:'home',
-  cart:[]
+  sort:'all',
+  cart:[],
+  user:{
+    loggedIn:false,
+    id:null,
+    money:null
+  }
 };
 
 const items = (state = initState.items, action) => {
@@ -69,8 +75,33 @@ const cart=(state=initState.cart,action)=>{
     return state
   }
 }
+const user=(state=initState.user,action)=>{
+  if(action.type==='logIn')
+  {
+    return {
+      ...state,loggedIn:true,id:action.payload
+    }
+  }
+  else if(action.type==='logOut')
+  {
+    return {
+      ...state,loggedIn:false
+    }
+  }
+  return state;
+}
+const sort=(state=initState.sort,action)=>{
+  if(action.type==='setSort'){
+    return action.payload;
+  }
+  else{
+    return state;
+  }
+}
 export default combineReducers({
   items: items,
   view:view,
-  cart:cart
+  cart:cart,
+  user:user,
+  sort:sort
 });

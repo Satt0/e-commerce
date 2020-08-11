@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import "./Login.scss";
 
+import UserProfile from "./UserProfile";
 export default function Login() {
-    return (
-        <div>
-            login page
-        </div>
-    )
+  return (
+    <div className="Login">
+      <UserProfile />
+    </div>
+  );
 }

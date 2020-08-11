@@ -1,6 +1,7 @@
 
-// const url = "http://localhost:4000";
-const url='https://lit-stream-93368.herokuapp.com';
+
+const url = "http://localhost:4000";
+// const url='https://lit-stream-93368.herokuapp.com';
 
 
 const API = {
@@ -31,6 +32,7 @@ const API = {
       }
     })
     .then((res) => {
+      console.log('hể');
      return res.items
     });
   },
@@ -55,6 +57,23 @@ const API = {
         return []
       }
     });
+  },
+  async SignUp(infor){
+    return await fetch(`${url}/user/signup`,{method:'POST',headers:{'Content-Type': 'application/json'},body:JSON.stringify({signup:infor})}).then(res=>res.json())
+  },
+  async SignIn(infor){
+    return await fetch(`${url}/user/signin`,{method:'POST',headers:{'Content-Type': 'application/json'},body:JSON.stringify(infor)}).then(res=>res.json())
+  }
+  ,
+  async getInfor(id){
+    return await fetch(`${url}/user/user/${id}`).then(res=>{
+      if(res.ok){
+        return res.json()
+      }
+      else{
+        console.log('failed to fetch user data');
+      }
+    })
   }
 };
 

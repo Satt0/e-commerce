@@ -1,5 +1,5 @@
 @import "../Items/Items.scss";
-@import '../../App.scss';
+@import "../../App.scss";
 .Cart {
   background-image: url("https://img.zing.vn/gn/images/data/000Thang12014/0303/Wall_1920x1200.jpg");
   background-position: center;
@@ -10,23 +10,35 @@
   position: absolute;
   flex-direction: column;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  overflow: scroll;
   &-List {
     width: 50vw;
-    min-width: 700px;
-    @media only screen and(orientation:portrait){
-      min-width: 89vw;
+    margin-top: 10vh;
+    min-width: 500px;
+    border-radius: 5px;
+    @media only screen and(orientation:portrait) {
+      min-width: 80vw;
     }
-    height: 45vh;
-    min-height: 400px;
+    height: 50vh;
+    min-height: 300px;
     overflow: hidden;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     flex-wrap: wrap;
     overflow-y: scroll;
-    background-color: rgba(36, 35, 35,.4);
+    background-color: rgba(36, 35, 35, 0.4);
+    &-Text {
+      color: white;
+      font-family: $font1;
+      font-size: 30px;
+      margin-top: 150px;
+      transform: rotate(15deg);
+
+      perspective: 15px;
+    }
     &-Item {
       border-radius: 5px;
       background-color: white;
@@ -89,14 +101,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    h2{
-      font-family:$font1 ;
+    h2 {
+      font-family: $font1;
     }
-    button{
+    button {
       margin-left: 14px;
-      height:30px;
-      width:100px;
-      color:white;
+      height: 30px;
+      width: 100px;
+      color: white;
       background-color: green;
       cursor: pointer;
       @extend %btn;
