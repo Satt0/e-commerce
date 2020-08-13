@@ -4,6 +4,12 @@ $font1: "Quicksand", sans-serif;
 $themeColor:#f0df4d;
 $fontItem:  'Source Sans Pro', sans-serif;
 $fontSide:  'Open Sans', sans-serif;
+@mixin backgroundImage($url){
+  background-image: url($url);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 @mixin setting {
   padding: 0;
   margin: 0;

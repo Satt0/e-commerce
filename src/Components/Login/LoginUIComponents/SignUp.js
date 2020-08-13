@@ -7,7 +7,8 @@ export default function SignUp() {
   const password = React.createRef();
   const submit = (e) => {
     e.preventDefault();
-    const infor ={name:name.current.value,username:username.current.value,password:password.current.value};
+    const infor ={name:name.current.value,username:username.current.value,password:password.current.value,money:'100000000'};
+    console.log(infor);
     API.SignUp(infor).then(res=>{
       if(res.result===true)
       {

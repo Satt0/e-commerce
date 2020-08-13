@@ -1,31 +1,30 @@
-import React,{useState} from "react";
-import API from '../../../API';
-import {useDispatch} from 'react-redux';
-import cookie from 'react-cookies'
+import React, { useState } from "react";
+import API from "../../../API";
+import { useDispatch } from "react-redux";
+
 export default function SignIn() {
   const dispatch = useDispatch();
-  const [state,setState]=useState('')
+  const [state, setState] = useState("");
   const username = React.createRef();
   const password = React.createRef();
   const submit = (e) => {
     e.preventDefault();
-    const infor ={username:username.current.value,password:password.current.value};
-    API.SignIn(infor).then(res=>{
-      if(res.result===true)
-      {   cookie.save('id',res.id,{path:'/'})
-        
-          dispatch({type:'logIn',payload:cookie.load('id')})
-      }
-      else{
-        if(res.log==='not_found')
-        {
-          setState("Username not found!!")
+    const infor = {
+      username: username.current.value,
+      password: password.current.value,
+    };
+    API.SignIn(infor).then((res) => {
+      if (res.result === true) {
+       
+        dispatch({ type: "logIn", payload: {name:res.name,money:res.money} });
+      } else {
+        if (res.log === "not_found") {
+          setState("Username not found!!");
+        } else {
+          setState("Wrong password!");
         }
-        else{
-          setState("Wrong password!")
-        }
       }
-    })
+    });
   };
   return (
     <div className="SignIn">
@@ -46,7 +45,7 @@ export default function SignIn() {
           placeholder="password"
         />
         <button>sign in</button>
-  <h3>{state}</h3>
+        <h3>{state}</h3>
       </form>
     </div>
   );

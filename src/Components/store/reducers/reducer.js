@@ -7,7 +7,7 @@ const initState = {
   cart:[],
   user:{
     loggedIn:false,
-    id:null,
+    name:null,
     money:null
   }
 };
@@ -79,13 +79,13 @@ const user=(state=initState.user,action)=>{
   if(action.type==='logIn')
   {
     return {
-      ...state,loggedIn:true,id:action.payload
+      ...state,loggedIn:true,name:action.payload.name,money:action.payload.money
     }
   }
   else if(action.type==='logOut')
   {
     return {
-      ...state,loggedIn:false
+      ...state,loggedIn:false,name:null,id:null
     }
   }
   return state;

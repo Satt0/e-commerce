@@ -5,14 +5,17 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import API from './API'
-import cookie from 'react-cookies';
-if(cookie.load('id'))
-{
-  store.dispatch({type:'logIn',payload:cookie.load('id')})
-}
+
+
 
 API.getAll().then(res=>{
   store.dispatch({type:'updateItem',payload:res})
+})
+API.getInfor().then(res=>{
+  if(res.result===true)
+  {
+    store.dispatch({type:'logIn',payload:res.user})
+  }
 })
 ReactDOM.render(
   <React.StrictMode>

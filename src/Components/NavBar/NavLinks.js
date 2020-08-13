@@ -4,7 +4,7 @@ import './NavLinks.scss'
 export default function NavLinks() {
     const view=useSelector(state=>state.view);
     const count=useSelector(state=>state.cart.length)
-    
+    const user=useSelector(state=>state.user.name);
      const dispatch = useDispatch();
      function setView(e){
       if (view!==e.target.id)
@@ -17,7 +17,7 @@ export default function NavLinks() {
           <ul>
             <li id='home' className={view==='home'?'checked':''} onClick={setView}>Home</li>
     <li id='cart' className={view==='cart'?'checked':''} onClick={setView}>Cart<div className="cart-count">{count}</div></li>
-            <li id='login' className={view==='login'?'checked':''} onClick={setView}>Login</li>
+            <li id='login'style={user?{color:'yellow'}:{}} className={view==='login'?'checked':''} onClick={setView}>{user?user:'Login'}</li>
           </ul>
         </div>
     )

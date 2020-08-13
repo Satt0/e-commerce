@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import SignIn from "./LoginUIComponents/SignIn";
 import SignUp from "./LoginUIComponents/SignUp";
 export default function LoginUI() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [state, setState] = useState("signin");
   const change = (e) => {
     setState(e.target.id);

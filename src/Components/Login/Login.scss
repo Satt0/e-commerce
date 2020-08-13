@@ -1,10 +1,12 @@
+@import '../../App.scss';
 .Login-Container {
   position: absolute;
   width: 100vw;
   height: 100vh;
   top: 0;
   right: 0;
-  background-color: rgba(17, 12, 12, 0.2);
+  @include backgroundImage('https://i.pinimg.com/originals/fa/65/a8/fa65a8d5772b9e322970814d00b3e2dc.jpg');
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,13 +42,13 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+       button{
+        @include button;
+       }
       }
     }
   }
-  .Login {
-    .UserProfile {
-    }
-  }
+  
 }
 @keyframes LoginUIanimation {
   from {
