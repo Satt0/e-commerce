@@ -1,5 +1,5 @@
-const url = "http://localhost:4000";
-// const url = "https://lit-stream-93368.herokuapp.com";
+// const url = "http://localhost:4000";
+const url = "https://lit-stream-93368.herokuapp.com";
 
 const API = {
   async getItemByName(name) {
