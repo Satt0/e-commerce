@@ -6,13 +6,9 @@ export default function ItemList(props) {
     const dispatch = useDispatch();
     function addToCart(){
         dispatch({type:'addToCart',payload:{
-            name:props.item.name,
             _id:props.item._id,
-            quantity:props.item.quantity,
-            URL:props.item.URL,
-            tag:props.item.tag,
-            price:props.item.price,
-            thisQuantity:1
+            thisQuantity:1,
+            status:'ready'
         }})
     }
    
@@ -36,9 +32,10 @@ export default function ItemList(props) {
             </div>
 
    </div>
-            <h4>{props.item.name.length>10?props.item.name.substring(0,10)+'...':props.item.name}</h4>
-    <h5 className="price">$: {props.item.price} coin</h5>
-            <button className="add-btn" onClick={addToCart}>Add to cart</button>
+            <h4>{props.item.name.length>10?props.item.name.substring(0,10).trim()+'...':props.item.name}</h4>
+    {props.item.quantity>0?<><h5 className="price">$: {props.item.price} coin</h5>
+            <button className="add-btn" onClick={addToCart}>Add to cart</button></>:<h5 className="price">out of stock</h5>}
+    
     </div>
    
    

@@ -1,5 +1,5 @@
-// const url = "http://localhost:4000";
-const url = "https://lit-stream-93368.herokuapp.com";
+const url = "http://localhost:4000";
+// const url = "https://lit-stream-93368.herokuapp.com";
 
 const API = {
   async getItemByName(name) {
@@ -23,11 +23,10 @@ const API = {
         if (res.ok) {
           return res.json();
         } else {
-          console.log("failed");
+          return [];
         }
       })
       .then((res) => {
-        console.log("hể");
         return res.items;
       });
   },
@@ -37,14 +36,12 @@ const API = {
         if (res.ok) {
           return res.json();
         } else {
-          console.log("res undefinded");
         }
       })
       .then((res) => {
         if (res) {
           return res.items;
         } else {
-          console.log("failed");
           return [];
         }
       });
@@ -75,7 +72,7 @@ const API = {
       }
     );
   },
-  async logOut(){
+  async logOut() {
     return await fetch(`${url}/user/logout`, { credentials: "include" }).then(
       (res) => {
         if (res.ok) {
@@ -85,7 +82,36 @@ const API = {
         }
       }
     );
-  }
+  },
+  async transaction() {
+    return await fetch(`${url}/user/transaction`, {
+      credentials: "include",
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        console.log("failed to fetch user data");
+      }
+    });
+  },
+  async commitTransaction(cart, id) {
+    return await fetch(`${url}/user/transaction/${id}`, {
+      credentials: "include",
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cart: cart }),
+    }).then((res) => {
+      try {
+        if (res.ok) {
+          return res.json();
+        }
+      } catch (err) {
+        console.log(err.message);
+      }
+    });
+  },
 };
 
 export default API;

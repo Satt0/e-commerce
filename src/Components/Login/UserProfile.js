@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import cookie from "react-cookies";
+
 import API from "../../API";
 import './UserProfile.scss'
 export default function UserProfile() {

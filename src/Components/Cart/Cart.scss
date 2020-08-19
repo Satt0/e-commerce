@@ -42,7 +42,8 @@
     &-Item {
       border-radius: 5px;
       background-color: white;
-
+      display:inline-block;
+      
       padding: 0;
       box-sizing: border-box;
       margin: 5px;
@@ -51,7 +52,7 @@
       width: 120px;
       position: relative;
       border: 1px solid gray;
-      display: inline-block;
+  
       color: rgb(59, 6, 6);
       img {
         padding: 0;
@@ -62,7 +63,7 @@
         max-width: 60px;
         height: 60px;
       }
-      h4 {
+      h4 ,h5,h6{
         margin: 0;
       }
       form {

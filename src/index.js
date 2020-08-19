@@ -7,7 +7,6 @@ import {Provider} from 'react-redux';
 import API from './API'
 
 
-
 API.getAll().then(res=>{
   store.dispatch({type:'updateItem',payload:res})
 })
