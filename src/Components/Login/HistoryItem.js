@@ -7,7 +7,7 @@ export default function HistoryItem({history:{infor:{date}},data}) {
   
     data=data.map(e=>{
         const found=items.find(item=>item._id===e._id);
-        
+        console.log(found);
         return {...e,name:found.name,price:found.price}
     })
     

@@ -1,5 +1,6 @@
-// const url = "http://localhost:4000";
-const url = "https://lit-stream-93368.herokuapp.com";
+const url = "http://localhost:4000";
+export  {url}  
+// const url = "https://lit-stream-93368.herokuapp.com";
 
 const API = {
   async getItemByName(name) {
@@ -114,7 +115,7 @@ const API = {
     });
   },
   async getHistory(userId){
-    return await fetch(`${url}/user/history`,{method:"POST", credentials: "include" ,body:JSON.stringify({id:userId})}).then(res=>{
+    return await fetch(`${url}/user/history`,{method:"POST", credentials: "include" , headers: { "Content-Type": "application/json" },body:JSON.stringify({id:userId})}).then(res=>{
       if(res.ok){
         return res.json()
       }

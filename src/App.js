@@ -5,11 +5,10 @@ import LoginContainer from "./Components/Container/LoginContainer";
 import HomeContainer from "./Components/Container/HomeContainer";
 import CartContainer from "./Components/Container/CartContainer";
 import { useSelector ,useDispatch} from "react-redux";
-
+import {url} from './API'
 import socketIOClient from "socket.io-client";
-const ENDPOINT = "https://lit-stream-93368.herokuapp.com/";
-// const ENDPOINT="http://localhost:4000"
 
+const ENDPOINT=url;
 const App = () => {
   const dispatch = useDispatch()
   const cart=useSelector(state=>state.cart);

@@ -19,8 +19,9 @@ export default function UserProfile() {
   };
  
 useEffect(()=>{
+  
 API.getHistory(user.id).then(res=>{
-
+console.log(res);
   setHistory(res.history);
 })
 },[])
