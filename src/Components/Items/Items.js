@@ -10,7 +10,7 @@ const Items =()=> {
   
  
     return <div className="Items">
-      {data.length===0?<h2 style={{marginLeft:'50px',color:'#f0df4d',textShadow:'1px 1px 5px black'}}>No Item Yet!</h2>:data.map((e,i)=><ItemList key={Math.floor(Math.random()*123123123123)} item={e}/>)}
+      {data.length===0?<h2 style={{marginLeft:'50px',color:'#f0df4d',textShadow:'1px 1px 5px black'}}>No Item Yet!</h2>:data.map((e,i)=><ItemList key={i} item={e}/>)}
     </div>;
   
 }

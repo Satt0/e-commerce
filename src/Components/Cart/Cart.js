@@ -1,16 +1,14 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import {useSelector,useDispatch} from 'react-redux';
 import Item from './Item'
 import API from '../../API'
 import './Cart.scss';
-import socketIOClient from "socket.io-client";
-// const ENDPOINT = "https://lit-stream-93368.herokuapp.com/";
-const ENDPOINT="http://localhost:4000"
 
 
 export default function Cart() {
     const cart=useSelector(state=>state.cart);
     const user=useSelector(state=>state.user.loggedIn);
+    const userId=useSelector(state=>state.user.id)
     const status=useSelector(state=>state.transaction.state)
     let transactionStatus=null;
     switch(status){
@@ -42,12 +40,12 @@ export default function Cart() {
         else{
             if(cart.length>0 && status==='ready'){
                 dispatch({type:'setState'});
-              await  API.transaction().then(async (res)=>{
+              await  API.transaction(userId).then(async (res)=>{
                     if(res.id)
                     {
                          dispatch({type:'setId',payload:res.id});
                          
-                   await API.commitTransaction(cart,res.id).then(res=>{
+                   await API.commitTransaction(cart,res.id,userId).then(res=>{
                  
                      if(res.res)
                      {
@@ -74,22 +72,7 @@ export default function Cart() {
         }
     }
 
-    useEffect(()=>{
-        const socket = socketIOClient(ENDPOINT);
-        
-       if(status==='success' || status==='failed')
-       {
-        
-            socket.emit('update',cart)
-       }
-      
-       socket.on('updateItem',(msg)=>{
-        dispatch({type:'updateStock',payload:msg})
-        
-       })
-
-        return () => socket.disconnect();
-    },[status])
+   
     return (
         <div className="Cart">
             <div className="Cart-List">

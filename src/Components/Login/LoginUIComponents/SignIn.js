@@ -16,7 +16,7 @@ export default function SignIn() {
     API.SignIn(infor).then((res) => {
       if (res.result === true) {
        
-        dispatch({ type: "logIn", payload: {name:res.name,money:res.money} });
+        dispatch({ type: "logIn", payload: {name:res.name,money:res.money,id:res.id} });
       } else {
         if (res.log === "not_found") {
           setState("Username not found!!");

@@ -1,5 +1,5 @@
-const url = "http://localhost:4000";
-// const url = "https://lit-stream-93368.herokuapp.com";
+// const url = "http://localhost:4000";
+const url = "https://lit-stream-93368.herokuapp.com";
 
 const API = {
   async getItemByName(name) {
@@ -9,7 +9,7 @@ const API = {
         if (res.ok) {
           return res.json();
         } else {
-          console.log("failed");
+          
         }
       })
       .then((res) => {
@@ -67,7 +67,7 @@ const API = {
         if (res.ok) {
           return res.json();
         } else {
-          console.log("failed to fetch user data");
+          
         }
       }
     );
@@ -78,40 +78,49 @@ const API = {
         if (res.ok) {
           return res.json();
         } else {
-          console.log("failed to fetch user data");
+          
         }
       }
     );
   },
-  async transaction() {
+  async transaction(userId) {
     return await fetch(`${url}/user/transaction`, {
       credentials: "include",
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      body:JSON.stringify({id:userId})
     }).then((res) => {
       if (res.ok) {
         return res.json();
       } else {
-        console.log("failed to fetch user data");
+   
       }
     });
   },
-  async commitTransaction(cart, id) {
+  async commitTransaction(cart, id,userId) {
     return await fetch(`${url}/user/transaction/${id}`, {
       credentials: "include",
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cart: cart }),
+      body: JSON.stringify({ cart: cart,id:userId}),
     }).then((res) => {
       try {
         if (res.ok) {
           return res.json();
         }
       } catch (err) {
-        console.log(err.message);
+        
       }
     });
   },
+  async getHistory(userId){
+    return await fetch(`${url}/user/history`,{method:"POST", credentials: "include" ,body:JSON.stringify({id:userId})}).then(res=>{
+      if(res.ok){
+        return res.json()
+      }
+      else return []
+    })
+  }
 };
 
 export default API;

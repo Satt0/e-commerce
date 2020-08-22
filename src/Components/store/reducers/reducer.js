@@ -9,6 +9,7 @@ const initState = {
     loggedIn: false,
     name: null,
     money: null,
+    id:null
   },
   transaction: {
     state: "ready",
@@ -87,7 +88,7 @@ const cart = (state = initState.cart, action) => {
       const index = arr.findIndex((e) => e._id === element.id);
       arr[index].status = element.status;
     });
-    console.log(arr);
+    
     return arr;
   } else {
     return state;
@@ -100,6 +101,7 @@ const user = (state = initState.user, action) => {
       loggedIn: true,
       name: action.payload.name,
       money: action.payload.money,
+      id:action.payload.id
     };
   } else if (action.type === "logOut") {
     return {

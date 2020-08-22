@@ -1,0 +1,15 @@
+.HistoryItem{
+    cursor: pointer;
+    box-sizing: border-box;
+    &-Hidden{
+        display:none;
+    }
+    &-Show{
+        display:block;
+        li{
+            display: inline-block;
+            margin-right: 20px;
+        }
+    }
+   
+}

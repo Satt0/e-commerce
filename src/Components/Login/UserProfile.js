@@ -1,13 +1,14 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import HistoryItem from './HistoryItem'
 import API from "../../API";
 import './UserProfile.scss'
 export default function UserProfile() {
   const dispatch = useDispatch();
-  
-  
+
+  const [history,setHistory]=useState([]);
   const user = useSelector((state) => state.user);
+ 
   const onLogout = () => {
     API.logOut().then(res=>{
       if(res.result)
@@ -16,7 +17,13 @@ export default function UserProfile() {
       }
     })
   };
+ 
+useEffect(()=>{
+API.getHistory(user.id).then(res=>{
 
+  setHistory(res.history);
+})
+},[])
   return (
     <div className="UserProfile">
       <div className="UserProfile-Infor">
@@ -25,7 +32,12 @@ export default function UserProfile() {
   <h5>cash:{user.money}</h5>
   <button className="UserProfile-Infor-Logout" onClick={onLogout}> Log out</button>
         </div>
-        <div className="UserProfile-Infor-History"></div>
+        <div className="UserProfile-Infor-History">
+        <h3>Transaction History.</h3>  
+          <ul>
+  {history.map((e,i)=><HistoryItem key={i} history={e} data={e.infor.item}/>)}
+          </ul>
+        </div>
       </div>
        
      
