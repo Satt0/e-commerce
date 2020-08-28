@@ -1,7 +1,7 @@
-const url = "http://localhost:4000";
-export  {url}  
-// const url = "https://lit-stream-93368.herokuapp.com";
+// const url = "http://localhost:4000";
 
+const url = "https://lit-stream-93368.herokuapp.com";
+export  {url}  
 const API = {
   async getItemByName(name) {
     name = name.split(" ").join("+");

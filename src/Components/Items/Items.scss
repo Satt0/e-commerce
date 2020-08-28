@@ -1,31 +1,27 @@
 @import "../../App.scss";
-%temp{
+%temp {
   animation: borderanimate 1.7s infinite;
   transform: scale(1.1);
 }
-%btn{
-  border: 1px solid rgb(63, 62, 62);
-        border-radius: 2px;
-        background-color: green;
-}
+
+
 .Items {
   display: flex;
-  overflow: scroll ;
+  overflow: scroll;
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
   align-content: flex-start;
   font-family: $fontItem;
   font-size: 15px;
- 
+
   @media only screen and (orientation: portrait) {
     justify-content: space-around;
-    
   }
 
   .ItemList {
-    animation:slideup 0.3s;
-  
+    animation: slideup 0.3s;
+    border: none;
     .main-infor {
       border-radius: 5px;
       background-color: white;
@@ -37,13 +33,14 @@
       height: 140px;
       width: 100px;
       position: relative;
-      border: 1px solid gray;
+      background-color: #fffafa;
       display: inline-block;
       color: rgb(59, 6, 6);
-      .price{
-        color:rgb(34, 218, 34);
+      .price {
+        color: rgb(34, 218, 34);
       }
       .hover-container {
+        position: relative;
         .img-container {
           display: inline-block;
           .img {
@@ -67,16 +64,16 @@
       .hover-container:hover {
         .hover {
           padding: 15px;
-          border-radius: 5px;
+          border-radius: 1px;
           border: none;
-z-index: 123;
-          -webkit-box-shadow: 2px 2px 2px 4px rgba(10, 10, 10, 0.9); /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-          -moz-box-shadow: 2px 2px 2px 4px rgba(10, 10, 10, 0.9); /* Firefox 3.5 - 3.6 */
-          box-shadow: 2px 2px 2px 4px rgba(10, 10, 10, 0.9);
+          z-index: 123;
+          -webkit-box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2); /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+          -moz-box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
 
+          box-shadow: 0 6px 0 rgba(0, 0, 0, 0.2);
           display: inline-block;
           position: absolute;
-          
+
           width: 160px;
 
           background-color: rgba(49, 33, 33, 0.9);
@@ -107,32 +104,30 @@ z-index: 123;
       .add-btn {
         position: absolute;
         top: 115px;
+        overflow: hidden;
+        height: 20px;
+        font-size: 12px;
         display: block;
         margin-left: 10px;
         @extend %btn;
-        color: white;
+
         cursor: pointer;
       }
       .add-btn:hover {
-       @extend %temp;
+        @extend %temp;
       }
     }
   }
- 
-  
-  
 }
 
-@keyframes slideup{
+@keyframes slideup {
   from {
     transform: translateY(15px);
     opacity: 0;
-    
-  
   }
-  to{
+  to {
     transform: translateY(0);
-    opacity:1;
+    opacity: 1;
   }
 }
 @keyframes borderanimate {

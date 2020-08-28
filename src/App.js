@@ -33,7 +33,7 @@ const App = () => {
   useEffect(()=>{
     const socket = socketIOClient(ENDPOINT);
     
-   if(status==='success' || status==='failed')
+   if(status==='success')
    {
     
         socket.emit('update',cart)

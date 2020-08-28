@@ -6,6 +6,7 @@
     }
     &-Show{
         display:block;
+        overflow: scroll;
         li{
             display: inline-block;
             margin-right: 20px;

@@ -15,8 +15,10 @@ export default function SignIn() {
     };
     API.SignIn(infor).then((res) => {
       if (res.result === true) {
-       
-        dispatch({ type: "logIn", payload: {name:res.name,money:res.money,id:res.id} });
+        dispatch({
+          type: "logIn",
+          payload: { name: res.name, money: res.money, id: res.id },
+        });
       } else {
         if (res.log === "not_found") {
           setState("Username not found!!");
@@ -30,21 +32,31 @@ export default function SignIn() {
     <div className="SignIn">
       <h2>Sign In</h2>
       <form autoComplete="off" onSubmit={submit}>
-        <input
-          type="text"
-          ref={username}
-          minLength="8"
-          required
-          placeholder="username"
-        />
-        <input
-          type="password"
-          ref={password}
-          minLength="8"
-          required
-          placeholder="password"
-        />
-        <button>sign in</button>
+        <div className="input-container">
+          <div className="SignIn Username"></div>
+          <input
+            id="SignIn-Username"
+            type="text"
+            ref={username}
+            minLength="8"
+            required
+            placeholder="username"
+          />
+        </div>
+
+        <div className="input-container">
+          <div className="SignIn Password"></div>
+          <input
+            id="SignIn-Password"
+            type="password"
+            ref={password}
+            minLength="8"
+            required
+            placeholder="password"
+          />
+        </div>
+
+        <button type="submit">sign in</button>
         <h3>{state}</h3>
       </form>
     </div>

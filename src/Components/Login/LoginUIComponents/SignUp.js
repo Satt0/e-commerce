@@ -23,21 +23,35 @@ export default function SignUp() {
     <div className="SignUp">
       <h2>Sign Up</h2>
       <form autoComplete="off" onSubmit={submit}>
+        <div className="input-container">
+          <div className="SignIn Name"></div>
         <input type="text" ref={name} placeholder="name" />
-        <input
-          type="text"
-          ref={username}
-          minLength="8"
-          required
-          placeholder="username"
-        />
-        <input
-          type="password"
-          ref={password}
-          minLength="8"
-          required
-          placeholder="password"
-        />
+        
+        </div>
+        <div className="input-container">
+          <div className="SignIn Username"></div>
+          <input
+            id="SignIn-Username"
+            type="text"
+            ref={username}
+            minLength="8"
+            required
+            placeholder="username"
+          />
+        </div>
+
+        <div className="input-container">
+          <div className="SignIn Password"></div>
+          <input
+            id="SignIn-Password"
+            type="password"
+            ref={password}
+            minLength="8"
+            required
+            placeholder="password"
+          />
+        </div>
+
         <button>sign up</button>
   <h3>{state}</h3>
       </form>

@@ -16,6 +16,7 @@ export default function Cart() {
         case 'pending': transactionStatus='Uploading transaction';break;
         case 'failed':transactionStatus='Transaction failed';break;
         case 'success':transactionStatus='Successfully!!';break;
+        case 'error':transactionStatus='Some Item are out of stock!';break;
         default:break;
     }
     if(status==='success' || status==='failed')

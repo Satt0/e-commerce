@@ -1,5 +1,6 @@
 
 @import '../../App.scss';
+
 .UserProfile{
     &-Infor{
         width:60vw;
@@ -24,13 +25,14 @@
             align-items: center;
             button{
                 font-family: $font1;
-                @include button
+                @extend %btn;
             }
         }
         &-History{
             width:100%;
             height:80vh;
             background-color: white;
+            overflow: scroll;
         }
 
     }

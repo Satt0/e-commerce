@@ -4,11 +4,13 @@ import {useDispatch} from 'react-redux';
 import '../../../JQuery/fly.min.css';
 export default function ItemList(props) {
     const dispatch = useDispatch();
+    
     function addToCart(){
         dispatch({type:'addToCart',payload:{
             _id:props.item._id,
             thisQuantity:1,
             status:'ready'
+            
         }})
     }
    

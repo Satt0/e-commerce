@@ -9,7 +9,7 @@ const initState = {
     loggedIn: false,
     name: null,
     money: null,
-    id:null
+    id: null,
   },
   transaction: {
     state: "ready",
@@ -30,8 +30,9 @@ const items = (state = initState.items, action) => {
         if (e._id === item[id]._id) {
           return {
             ...e,
-            quantity: (
-              -Number(item[id].thisQuantity) + Number(e.quantity)
+            quantity: Math.max(
+              -Number(item[id].thisQuantity) + Number(e.quantity),
+              0
             ).toString(),
           };
         }
@@ -88,7 +89,7 @@ const cart = (state = initState.cart, action) => {
       const index = arr.findIndex((e) => e._id === element.id);
       arr[index].status = element.status;
     });
-    
+
     return arr;
   } else {
     return state;
@@ -101,7 +102,7 @@ const user = (state = initState.user, action) => {
       loggedIn: true,
       name: action.payload.name,
       money: action.payload.money,
-      id:action.payload.id
+      id: action.payload.id,
     };
   } else if (action.type === "logOut") {
     return {

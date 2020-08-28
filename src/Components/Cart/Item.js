@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 export default function Item({
   id,
@@ -8,10 +8,13 @@ export default function Item({
   const inputRef = React.createRef();
   // state's quantity
   const count = useSelector((state) => state.cart[id].thisQuantity);
+  
   const item=useSelector(state=>state.items)
   const src=item.find(e=>e._id===_id);
 
   const dispatch = useDispatch();
+
+//  
   function changeQuantity(e) {
     if (inputRef.current.value <= Number(src.quantity)) {
       dispatch({
