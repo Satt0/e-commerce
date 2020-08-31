@@ -1,9 +1,9 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux';
 import Item from './Item'
 import API from '../../API'
 import './Cart.scss';
-
+import Timer from './Timer'
 
 export default function Cart() {
     const cart=useSelector(state=>state.cart);
@@ -11,25 +11,17 @@ export default function Cart() {
     const userId=useSelector(state=>state.user.id)
     const status=useSelector(state=>state.transaction.state)
     let transactionStatus=null;
+    
     switch(status){
-        case 'ready': transactionStatus='Ready to commit';break;
+        case 'ready': transactionStatus="";break;
         case 'pending': transactionStatus='Uploading transaction';break;
         case 'failed':transactionStatus='Transaction failed';break;
         case 'success':transactionStatus='Successfully!!';break;
         case 'error':transactionStatus='Some Item are out of stock!';break;
         default:break;
     }
-    if(status==='success' || status==='failed')
-    {
-        API.getAll().then(res=>{
-            dispatch({type:'updateItem',payload:res})
-          })
-        
-        setTimeout(()=>{
-            dispatch({type:'renewTransaction'});
-            
-        },2000)
-    }
+   
+    
     const dispatch = useDispatch()
     
    
@@ -73,6 +65,21 @@ export default function Cart() {
         }
     }
 
+   useEffect(() => {
+    if(status==='success' || status==='failed')
+    {   
+        API.getAll().then(res=>{
+            
+            dispatch({type:'updateItem',payload:res})
+          })
+        
+        setTimeout(()=>{
+            dispatch({type:'renewTransaction'});
+            
+        },3000)
+    }
+       
+   }, [status])
    
     return (
         <div className="Cart">
@@ -82,7 +89,7 @@ export default function Cart() {
             <div className="Cart-Payment">
    
     {status==='ready'?<><button onClick={makeDeal}>Buy All</button></>:<></>}
-    <h3>{transactionStatus}</h3>
+    <h3>{transactionStatus}{status==='success'?<Timer/>:''}</h3>
             </div>
         </div>
     )

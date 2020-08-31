@@ -7,7 +7,7 @@ import CartContainer from "./Components/Container/CartContainer";
 import { useSelector ,useDispatch} from "react-redux";
 import {url} from './API'
 import socketIOClient from "socket.io-client";
-
+//Socket io implementation!
 const ENDPOINT=url;
 const App = () => {
   const dispatch = useDispatch()

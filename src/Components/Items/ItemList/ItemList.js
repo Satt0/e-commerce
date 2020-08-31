@@ -1,17 +1,26 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {useDispatch} from 'react-redux';
 
 import '../../../JQuery/fly.min.css';
 export default function ItemList(props) {
     const dispatch = useDispatch();
-    
-    function addToCart(){
-        dispatch({type:'addToCart',payload:{
-            _id:props.item._id,
-            thisQuantity:1,
-            status:'ready'
-            
-        }})
+    const [add,setAdd]=useState(false);
+   async function addToCart(){
+        await setAdd(!add);
+        if(!add)
+        {
+            await dispatch({type:'addToCart',payload:{
+                _id:props.item._id,
+                thisQuantity:1,
+                status:'ready'
+                
+            }})
+        }
+        else{
+            await dispatch({type:'deleteFromCart',payload:props.item._id})
+        }
+       
+
     }
    
     return (
@@ -34,13 +43,19 @@ export default function ItemList(props) {
             </div>
 
    </div>
+   <h5>{props.item.quantity>0?`${props.item.quantity} left`:''}</h5>
+
             <h4>{props.item.name.length>10?props.item.name.substring(0,10).trim()+'...':props.item.name}</h4>
+
     {props.item.quantity>0?<><h5 className="price">$: {props.item.price} coin</h5>
-            <button className="add-btn" onClick={addToCart}>Add to cart</button></>:<h5 className="price">out of stock</h5>}
+                    
+            <button className="add-btn " onClick={addToCart}>{!add?"Add to cart":'Remove'}</button></>:<h5 className="price OFS">out of stock!!</h5>}
     
     </div>
    
-   
+<div className={add?"addedToCart add":"addedToCart"}> 
+        <h4>{add?"Added":"Removed"}</h4>
+   </div>
     
  
         </div>

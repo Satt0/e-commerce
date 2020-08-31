@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 export default function Item({
   id,
@@ -27,11 +27,11 @@ export default function Item({
     }
   }
   function deleteFromCart(){
-    dispatch({type:'deleteFromCart',payload:id})
+    dispatch({type:'deleteFromCart',payload:_id})
   }
   return (
     <div className="Cart-List-Item">
-      <h5>{src.name.length>12?src.name.substring(0,12).trim()+'...':src.name}</h5>
+      <h5>{src.name.length>12?src.name.substring(0,10).trim()+'...':src.name}</h5>
       <img src={src.URL} alt={src.name} />
       <form>
         {/* <label htmlFor="count">quantity</label> */}

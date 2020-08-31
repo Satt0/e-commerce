@@ -66,6 +66,7 @@
             transition: all .2s;
             transform: scale(1.13) translateX(15px);
             box-shadow: 2px 4px 2px rgba(0, 0, 0, 0.4);
+            
           }
           
           div.SignIn,div.SignUp{
@@ -99,7 +100,7 @@
         @for $i from 1 to 5 {
           .input-container:nth-child(#{$i}){
             animation:slide-left 0.3s forwards;
-            animation-delay: $i * 60ms;
+            animation-delay: $i * 90ms;
           }
         }
         

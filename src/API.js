@@ -1,6 +1,6 @@
 // const url = "http://localhost:4000";
-
-const url = "https://lit-stream-93368.herokuapp.com";
+const url='http://192.168.1.8:4000'
+// const url = "https://lit-stream-93368.herokuapp.com";
 export  {url}  
 const API = {
   async getItemByName(name) {

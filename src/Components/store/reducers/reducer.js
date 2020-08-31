@@ -56,13 +56,7 @@ const cart = (state = initState.cart, action) => {
   if (action.type === "addToCart") {
     let index = state.findIndex((e) => e._id === action.payload._id);
     if (index !== -1) {
-      return state.map((e, i) => {
-        if (i === index) {
-          return { ...e, thisQuantity: e.thisQuantity + 1 };
-        } else {
-          return e;
-        }
-      });
+     return [...state]
     } else {
       return [...state, action.payload];
     }
@@ -73,9 +67,10 @@ const cart = (state = initState.cart, action) => {
 
     return arr;
   } else if (action.type === "deleteFromCart") {
-    if (state[action.payload]) {
-      return [...state].filter((e, i) => i !== action.payload);
-    }
+    
+      return [...state].filter((e, i) => e._id !== action.payload);
+    
+    
   } else if (action.type === "itemStatus") {
     const success = action.payload.success;
     const failure = action.payload.failure;
