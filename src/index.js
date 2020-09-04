@@ -1,21 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import store from './Components/store/store'
+//import redux store
+import store from './Components/store/store';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
-import API from './API'
 
-
-API.getAll().then(res=>{
-  store.dispatch({type:'updateItem',payload:res})
-})
-API.getInfor().then(res=>{
-  if(res.result===true)
-  {
-    store.dispatch({type:'logIn',payload:res.user})
-  }
-})
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
