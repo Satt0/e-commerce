@@ -30,7 +30,7 @@ API.getHistory(user.id).then(res=>{
     setHistory([])
   }
 })
-},[])
+},[user.id])
   return (
     <div className="UserProfile">
       <div className="UserProfile-Infor">
@@ -40,9 +40,9 @@ API.getHistory(user.id).then(res=>{
   <button className="UserProfile-Infor-Logout" onClick={onLogout}> Log out</button>
         </div>
         <div className="UserProfile-Infor-History">
-        <h3>Transaction History.</h3>  
+        <h3 className="title">Transaction History.</h3>  
           <ul>
-  {history.map((e,i)=><HistoryItem key={i} history={e} data={e.infor.item}/>)}
+  {history.map((e,i)=><HistoryItem key={i} history={e} data={e.infor.item}/>).reverse()}
           </ul>
         </div>
       </div>

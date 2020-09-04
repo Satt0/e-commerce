@@ -1,16 +1,40 @@
-.HistoryItem{
-    cursor: pointer;
-    box-sizing: border-box;
-    &-Hidden{
-        display:none;
+.HistoryItem {
+  &-Dropdown {
+    .triangle {
+      width: 12px;
+      height: 14px;
+      clip-path: polygon(100% 46%, 0 0, 0 100%);
+      display: inline-block;
+      background-color: rgb(76, 223, 76);
+      transition: all 0.3s;
+      margin-right: 4px;
+      padding: 0;
     }
-    &-Show{
-        display:block;
-        overflow: scroll;
-        li{
-            display: inline-block;
-            margin-right: 20px;
-        }
+    .triangle.rotate {
+      transform: rotate(90deg);
+      transition: all 0.3s;
     }
-   
+    h5 {
+      display: inline-block;
+    }
+  }
+
+  cursor: pointer;
+  box-sizing: border-box;
+  &-Hidden {
+    display: none;
+  }
+  &-Show {
+    display: block;
+    overflow: scroll;
+    overflow: hidden;
+
+    li {
+      display: block;
+      margin-right: 20px;
+      border-left: 1px solid rgb(102, 228, 102);
+      padding-left: 5px;
+      margin-bottom: 5px;
+    }
+  }
 }

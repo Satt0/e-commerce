@@ -20,7 +20,7 @@
 
   .ItemList {
     position: relative;
-   
+
     border: none;
     .main-infor {
       border-radius: 5px;
@@ -138,7 +138,7 @@
       font-family: "Russo One", sans-serif;
       z-index: 5;
       opacity: 0;
-      transition: all .6s;
+      transition: all 0.6s;
       h4 {
         text-shadow: 1px 3px 1px rgba(0, 0, 0, 0.2);
       }
@@ -147,9 +147,8 @@
       transform: translateY(-35px);
       opacity: 1;
       z-index: 6;
-      
-      transition: all .6s;
-      
+
+      transition: all 0.6s;
     }
   }
   // @for $i from 1 to 100 {
@@ -157,47 +156,7 @@
   //     animation: slideup 0.3s forwards;
   //     animation-delay: 0 + $i * 10ms;
   //     display:relative;
-      
+
   //   }
   // }
-}
-@keyframes slideup {
-  0% {
-    opacity: 0;
-    transform: translateY(-15px);
-    z-index: 100;
-  }
-  40% {
-    opacity: 1;
-    transform: translateY(0);
-    z-index: 0;
-    
-  }
-  100%{
-    opacity: 1;
-    transform: translateY(0);
-    z-index: 0;
-  }
-  
-}
-@keyframes addedSlideUp {
-  from {
-    transform: translateY(15px);
-    z-index: 6;
-    opacity: 0;
-  }
-  to {
-    transform: translateY(-35px);
-    opacity: 1;
-    z-index: 6;
-  }
-}
-@keyframes borderanimate {
-  0%,
-  100% {
-    border: 1px solid rgb(0, 122, 0);
-  }
-  50% {
-    border: 1px solid rgb(255, 255, 5);
-  }
 }

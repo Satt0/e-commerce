@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import {useDispatch} from 'react-redux';
 
-import '../../../JQuery/fly.min.css';
+
 export default function ItemList(props) {
     const dispatch = useDispatch();
     const [add,setAdd]=useState(false);

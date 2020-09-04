@@ -1,38 +1,6 @@
-$colorTheme: gray;
-$colorText: white;
-$font1: "Quicksand", sans-serif;
-$themeColor:#f0df4d;
-$fontItem:  'Source Sans Pro', sans-serif;
-$fontSide:  'Open Sans', sans-serif;
-$color-text: rgb(255, 255, 255);
-$navbar-width-toggle:550px;
-%btn {
-  border: 1px solid rgb(63, 62, 62);
-  border-radius: 2px;
-  background-color: green;
-  box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.2);
-  color: lighten($color-text, 10%);
-  font-family: "Open Sans";
-color:$color-text !important;
-  cursor: pointer;
-}
-@mixin backgroundImage($url){
-  background-image: url($url);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-@mixin setting {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  
-}
-@mixin button {
-  color: white;
-  background-color:$themeColor ;
-  border: none;
-}
+@import "./helper/variables";
+@import "./helper//placeholders";
+@import './helper//animations';
 html {
   overflow: scroll;
   input,
@@ -42,45 +10,45 @@ html {
     appearance: none;
   }
   input[type="color"],
-input[type="date"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="email"],
-input[type="month"],
-input[type="number"],
-input[type="password"],
-input[type="search"],
-input[type="tel"],
-input[type="text"],
-input[type="time"],
-input[type="url"],
-input[type="week"],
-select:focus,
-textarea {
-  font-size: 16px !important;
-}
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="email"],
+  input[type="month"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="text"],
+  input[type="time"],
+  input[type="url"],
+  input[type="week"],
+  select:focus,
+  textarea {
+    font-size: 16px !important;
+  }
 }
 .App {
   position: absolute;
-  
-  top:0px;
-  left:0px;
-  right:0px;
+
+  top: 0px;
+  left: 0px;
+  right: 0px;
   .NavBar {
-  min-height: 43px;
+    min-height: 43px;
     z-index: 121;
-    @include setting;
+    @extend %setting;
     background-color: $colorTheme;
     display: flex;
-   
-    justify-content:space-between;
+
+    justify-content: space-between;
     align-items: center;
     position: relative;
     height: auto;
     font-size: 20px;
     button {
       position: absolute;
-     @extend %btn;
+      @extend %btn;
       right: 14px;
       top: 9px;
       display: none;
@@ -88,51 +56,47 @@ textarea {
       max-height: 50px;
       color: black;
       border-radius: 3px;
-      width:40px;
-      .hamburgur{
+      width: 40px;
+      .hamburgur {
         border-bottom: 2px solid white;
         margin-top: 4px;
         margin-bottom: 4px;
-        transition:all .3s;
-        background-color:green;
-        padding:0;
-        
-        
+        transition: all 0.3s;
+        background-color: green;
+        padding: 0;
       }
-      .hamburgur.top{
+      .hamburgur.top {
         -webkit-transform: translateY(6px) rotate(28deg);
         -ms-transform: translateY(6px) rotate(28deg);
         -o-transform: translateY(6px) rotate(28deg);
         transform: translateY(6px) rotate(28deg);
       }
-      .hamburgur.middle{
+      .hamburgur.middle {
         opacity: 0;
-
       }
-      .hamburgur.bottom{
+      .hamburgur.bottom {
         -webkit-transform: translateY(-6px) rotate(-28deg);
-  -ms-transform: translateY(-6px) rotate(-28deg);
-  -o-transform: translateY(-6px) rotate(-28deg);
-  transform: translateY(-6px) rotate(-28deg);
+        -ms-transform: translateY(-6px) rotate(-28deg);
+        -o-transform: translateY(-6px) rotate(-28deg);
+        transform: translateY(-6px) rotate(-28deg);
       }
-
     }
-    button.have-border{
-      background-color: '';
+    button.have-border {
+      background-color: "";
     }
 
     .show,
     form {
-      animation: showup .2s forwards;
+      animation: showup 0.2s forwards;
       margin-top: 4px;
-     box-sizing: border-box;
+      box-sizing: border-box;
       position: relative;
-   
+
       overflow: hidden;
-      @media only screen and (max-width:$navbar-width-toggle){
-        width:100vw;
-      
-      margin: 2px 27% 2px 20%;
+      @media only screen and (max-width: $navbar-width-toggle) {
+        width: 100vw;
+
+        margin: 2px 27% 2px 20%;
       }
       z-index: 12123;
       .input#search {
@@ -143,17 +107,16 @@ textarea {
       }
       .input#btn {
         height: 30px;
-        
+
         border: none;
         margin-left: 3px;
         border-radius: 3px;
         cursor: pointer;
         @extend %btn;
         margin-right: 6px;
-
       }
     }
-    @media only screen and (max-width:$navbar-width-toggle) {
+    @media only screen and (max-width: $navbar-width-toggle) {
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
@@ -162,7 +125,6 @@ textarea {
       button {
         display: block;
         z-index: 1212;
-       
       }
       form.hide {
         display: none;
@@ -172,13 +134,13 @@ textarea {
     .links {
       margin-left: 6px;
       ul {
-        @include setting;
-        
+        @extend %setting;
+
         display: flex;
         flex-direction: row;
         align-items: center;
         li {
-          @include setting;
+          @extend %setting;
           color: $colorText;
           display: inline-flex;
           flex-direction: row;
@@ -186,7 +148,6 @@ textarea {
           margin-right: 6px;
           cursor: pointer;
           font-family: $font1;
-          
         }
         li:hover {
           border-bottom: 1px solid orange;
@@ -195,24 +156,24 @@ textarea {
     }
   }
   .main {
- 
-    @include setting;
+    @extend %setting;
+
     display: flex;
     flex-direction: row;
 
     .SidePanel {
       width: 10vw;
       min-width: 100px;
-      @include setting;
-      
+      @extend %setting;
+
       height: 100vh;
     }
     .Items {
       width: 95vw;
-      @include setting;
-      
+      @extend %setting;
+
       height: 100vh;
-      background-image: url('https://img.zing.vn/gn/images/data/000Thang12014/000/T4_1_1920x1200.jpg');
+      background-image: url("https://img.zing.vn/gn/images/data/000Thang12014/000/T4_1_1920x1200.jpg");
       background-position: right;
       background-repeat: no-repeat;
       background-size: cover;
@@ -228,22 +189,5 @@ textarea {
         width: 100vw;
       }
     }
-  }
-}
-
-@keyframes showup {
-  0% {
-    height: 0px;
-    transform: translateX(-70px);
-    opacity: 0;
-  }
-  50% {
-    height: 39px;
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-    height: 39px;
-    transform: translateX(0);
   }
 }
