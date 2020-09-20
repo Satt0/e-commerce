@@ -1,4 +1,5 @@
 @import "../../App.scss";
+
 .links {
   display: flex;
   flex-direction: row;
@@ -16,9 +17,7 @@
   }
   ul {
     display: inline-block;
-    .checked {
-      border-bottom: 1px solid $themeColor;
-    }
+    
     li {
       .cart-count {
         display: inline-block;
@@ -36,6 +35,27 @@
 
         margin-left: 2px;
       }
+    }
+  }
+  margin-left: 6px;
+  ul {
+    @extend %setting;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    li {
+      @extend %setting;
+      color: $colorText;
+      display: inline-flex;
+      flex-direction: row;
+      clear: none;
+      margin-right: 6px;
+      cursor: pointer;
+      font-family: $font1;
+    }
+   a > li:hover {
+      border-bottom: 1px solid orange;
     }
   }
 }

@@ -131,30 +131,7 @@ html {
       }
     }
 
-    .links {
-      margin-left: 6px;
-      ul {
-        @extend %setting;
-
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        li {
-          @extend %setting;
-          color: $colorText;
-          display: inline-flex;
-          flex-direction: row;
-          clear: none;
-          margin-right: 6px;
-          cursor: pointer;
-          font-family: $font1;
-        }
-        li:hover {
-          border-bottom: 1px solid orange;
-        }
-      }
-    }
-  }
+     }
   .main {
     @extend %setting;
 

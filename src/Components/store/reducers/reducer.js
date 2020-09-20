@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 
 const initState = {
   items: [],
-  view: "home",
+
   sort: "all",
   cart: [],
   user: {
@@ -45,13 +45,7 @@ const items = (state = initState.items, action) => {
     return state;
   }
 };
-const view = (state = initState.view, action) => {
-  if (action.type === "setView") {
-    return action.payload;
-  } else {
-    return state;
-  }
-};
+
 const cart = (state = initState.cart, action) => {
   if (action.type === "addToCart") {
     let index = state.findIndex((e) => e._id === action.payload._id);
@@ -130,7 +124,7 @@ const sort = (state = initState.sort, action) => {
 };
 export default combineReducers({
   items: items,
-  view: view,
+ 
   cart: cart,
   user: user,
   sort: sort,
