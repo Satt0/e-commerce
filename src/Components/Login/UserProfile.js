@@ -25,7 +25,7 @@ export default function UserProfile() {
         setHistory([]);
       }
     });
-  }, []);
+  }, [user.id]);
   return (
     <div className="UserProfile">
       <div className="UserProfile-Infor">

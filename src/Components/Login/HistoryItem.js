@@ -14,7 +14,7 @@ export default function HistoryItem({history:{infor:{date}},data}) {
             return {...e,name:found.name,price:found.price}
         })
         setData(temp)}
-    },[])
+    },[data,items])
     return (
         <div className="HistoryItem">
             <div className="HistoryItem-Dropdown" onClick={()=>{setHidden(!hidden)}}>

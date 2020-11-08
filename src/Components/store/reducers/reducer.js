@@ -3,7 +3,11 @@ import { combineReducers } from "redux";
 const initState = {
   items: [],
 
-  sort: "all",
+  sort: {
+    view: "all",
+    items: [],
+  },
+
   cart: [],
   user: {
     loggedIn: false,
@@ -117,14 +121,22 @@ const transaction = (state = initState.transaction, action) => {
 };
 const sort = (state = initState.sort, action) => {
   if (action.type === "setSort") {
-    return action.payload;
+    return {
+      ...state,
+      view: action.payload.view,
+      items: action.payload.items.filter((e) =>
+        action.payload.view !== "all" ? e.tag === action.payload.view : true
+      ),
+    };
+  } else if (action.type === "searchItem") {
+    return { ...state, view: "custom", items: action.payload };
   } else {
-    return state;
+    return { ...state };
   }
 };
 export default combineReducers({
   items: items,
- 
+
   cart: cart,
   user: user,
   sort: sort,

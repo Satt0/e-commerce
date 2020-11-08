@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 
 
 export default function ItemList(props) {
     const dispatch = useDispatch();
     const [add,setAdd]=useState(false);
+    const isAdded=useSelector(state=>state.cart.findIndex(e=>e._id===props.item._id));
+    
    async function addToCart(){
         await setAdd(!add);
         if(!add)
@@ -49,12 +51,12 @@ export default function ItemList(props) {
 
     {props.item.quantity>0?<><h5 className="price">$: {props.item.price} coin</h5>
                     
-            <button className="add-btn " onClick={addToCart}>{!add?"Add to cart":'Remove'}</button></>:<h5 className="price OFS">out of stock!!</h5>}
+            <button className="add-btn " onClick={addToCart}>{isAdded===-1?"Add to cart":'Remove'}</button></>:<h5 className="price OFS">out of stock!!</h5>}
     
     </div>
    
-<div className={add?"addedToCart add":"addedToCart"}> 
-        <h4>{add?"Added":"Removed"}</h4>
+<div className={isAdded!==-1?"addedToCart add":"addedToCart"}> 
+        <h4>{isAdded!==-1?"Added":"Removed"}</h4>
    </div>
     
  

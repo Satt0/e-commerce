@@ -18,9 +18,9 @@ export default function NavLinks() {
         <div className="links">
            <div className='logo-container'><a style={{cursor:'pointer'}} onClick={()=>{window.open('http://idgunny.360game.vn'); return false;}}> <img src='https://ddtmobile.com/static/official_site/en_mobile/img/index_logo.png' alt='logo'/></a></div>
           <ul>
-            <li><Link to="/"><li>Home</li></Link></li>
+            <li><Link to="/">Home</Link></li>
             <li><Link to="/cart"><CartCounter count={count}/></Link></li>
-            <li><Link to="/user"><li>{user?user:'Login'}</li></Link></li>
+            <li><Link to="/user">{user?user:'Login'}</Link></li>
           </ul>
         </div>
     )

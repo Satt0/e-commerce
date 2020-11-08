@@ -2,12 +2,19 @@
 @import "./helper//placeholders";
 @import './helper//animations';
 html {
+  a{
+    text-decoration: none !important;
+  }
   overflow: scroll;
   input,
   button {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+   
+  }
+  button:active {
+    border-style: outset !important;
   }
   input[type="color"],
   input[type="date"],

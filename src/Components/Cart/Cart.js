@@ -79,7 +79,7 @@ export default function Cart() {
         },3000)
     }
        
-   }, [status])
+   }, [status,dispatch])
    
     return (
         <div className="Cart">

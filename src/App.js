@@ -8,8 +8,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { url } from "./API";
 import socketIOClient from "socket.io-client";
 import API from './API';
-import {BrowserRouter as Router,
-Route,Switch} from 'react-router-dom';
+import {
+
+  Switch,
+  Route
+ 
+} from "react-router-dom";
 
 //use socket.io to update items in real time.
 const ENDPOINT = url; //socket.io endpoint, same as api endpoint.
@@ -17,19 +21,25 @@ const App = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const status = useSelector((state) => state.transaction.state);
-
+  const items=useSelector(state=>state.items);
   
   useEffect(()=>{
     API.getAll().then(res=>{
       dispatch({type:'updateItem',payload:res})
     })
+    
+  },[dispatch])
+  useEffect(()=>{
+    dispatch({type:'setSort',payload:{view:'all',items:items}})
+  },[items,dispatch])
+  useEffect(()=>{
     API.getInfor().then(res=>{
       if(res.result===true)
       {
         dispatch({type:'logIn',payload:res.user})
       }
     })
-  },[])
+  })
   useEffect(() => {
     //socket.io implementation, updates items based on transacton status(redux state)
     const socket = socketIOClient(ENDPOINT);
@@ -43,12 +53,19 @@ const App = () => {
     });
 
     return () => socket.disconnect();
-  }, [status]);
+  }, [status,dispatch,cart]);
   return (
-    <Router>
+
     <div className="App">
       <NavBar />
       {/* {currentview} */}
+     
+     
+     
+     
+     
+     
+     
       <Switch>
         
         <Route path="/cart">
@@ -62,8 +79,11 @@ const App = () => {
         </Route>
       </Switch>
     </div>
-    </Router>
+   
   );
 };
+
+
+
 
 export default App;

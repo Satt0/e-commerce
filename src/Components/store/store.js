@@ -7,8 +7,8 @@ export default createStore(
   reducer,
   compose(
     applyMiddleware(...middleWare),
-    //disable the second parameter for redux to work on mobile device!!!!
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    // // disable the second parameter for redux to work on mobile device!!!!
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 

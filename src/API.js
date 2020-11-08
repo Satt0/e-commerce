@@ -1,7 +1,7 @@
-const url = "http://localhost:4000";
+// const url = "http://localhost:4000";
 // const url='http://192.168.1.8:4000'
-// const url = "https://lit-stream-93368.herokuapp.com";
-export  {url}  
+const url =true? "https://lit-stream-93368.herokuapp.com":"http://localhost:4000";
+export { url };
 const API = {
   async getItemByName(name) {
     name = name.split(" ").join("+");
@@ -10,7 +10,6 @@ const API = {
         if (res.ok) {
           return res.json();
         } else {
-          
         }
       })
       .then((res) => {
@@ -68,7 +67,6 @@ const API = {
         if (res.ok) {
           return res.json();
         } else {
-          
         }
       }
     );
@@ -79,7 +77,6 @@ const API = {
         if (res.ok) {
           return res.json();
         } else {
-          
         }
       }
     );
@@ -89,39 +86,40 @@ const API = {
       credentials: "include",
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body:JSON.stringify({id:userId})
+      body: JSON.stringify({ id: userId }),
     }).then((res) => {
       if (res.ok) {
         return res.json();
       } else {
-   
       }
     });
   },
-  async commitTransaction(cart, id,userId) {
+  async commitTransaction(cart, id, userId) {
     return await fetch(`${url}/user/transaction/${id}`, {
       credentials: "include",
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cart: cart,id:userId}),
+      body: JSON.stringify({ cart: cart, id: userId }),
     }).then((res) => {
       try {
         if (res.ok) {
           return res.json();
         }
-      } catch (err) {
-        
-      }
+      } catch (err) {}
     });
   },
-  async getHistory(userId){
-    return await fetch(`${url}/user/history`,{method:"POST", credentials: "include" , headers: { "Content-Type": "application/json" },body:JSON.stringify({id:userId})}).then(res=>{
-      if(res.ok){
-        return res.json()
-      }
-      else return []
-    })
-  }
+  async getHistory(userId) {
+    return await fetch(`${url}/user/history`, {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: userId }),
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      } else return [];
+    });
+  },
 };
 
 export default API;
