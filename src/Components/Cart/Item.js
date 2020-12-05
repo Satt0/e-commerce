@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Button from '../../SmallComponents/Button'
 export default function Item({
   id,
   item: {_id,thisQuantity ,status}
@@ -50,7 +51,7 @@ export default function Item({
       </form>
         <h5>{src.quantity} left</h5>
       <h4 className="price">$: {count * Number(src.price)}</h4>
-      <button onClick={deleteFromCart}>delete</button>
+      <Button onClick={deleteFromCart} title="delete" theme={{width:'76px',height:'25px',color:'red'}}/>
         <h6>{status}</h6>
     </div>
   );

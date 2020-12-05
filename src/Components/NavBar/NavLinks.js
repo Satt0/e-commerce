@@ -1,22 +1,22 @@
 import React from 'react'
-import {useSelector,useDispatch} from 'react-redux'
+import {useSelector} from 'react-redux'
 import './NavLinks.scss';
 import {Link} from 'react-router-dom';
 import CartCounter from './smallerComponents/CartCounter'
 export default function NavLinks() {
-    const view=useSelector(state=>state.view);
+    // const view=useSelector(state=>state.view);
     const count=useSelector(state=>state.cart.length)
     const user=useSelector(state=>state.user.name);
-     const dispatch = useDispatch();
-     function setView(e){
-      if (view!==e.target.id)
-      { dispatch({type:'setView',payload:e.target.id})
-       }
-     }
+    //  const dispatch = useDispatch();
+    //  function setView(e){
+    //   if (view!==e.target.id)
+    //   { dispatch({type:'setView',payload:e.target.id})
+    //    }
+    //  }
 
     return (
         <div className="links">
-           <div className='logo-container'><a style={{cursor:'pointer'}} onClick={()=>{window.open('http://idgunny.360game.vn'); return false;}}> <img src='https://ddtmobile.com/static/official_site/en_mobile/img/index_logo.png' alt='logo'/></a></div>
+           <div className='logo-container'><a href="http://idgunny.360game.vn" rel="noopener"> <img src='https://ddtmobile.com/static/official_site/en_mobile/img/index_logo.png' alt='logo'/></a></div>
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/cart"><CartCounter count={count}/></Link></li>

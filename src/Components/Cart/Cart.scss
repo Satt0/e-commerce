@@ -88,15 +88,7 @@
       .price {
         color: rgb(34, 218, 34);
       }
-      button {
-        width: 70px;
-        border: none;
-        color: white;
-        @extend %btn;
-      }
-      button:hover {
-        @extend %temp;
-      }
+      
     }
   }
   &-Payment {
@@ -108,17 +100,8 @@
     h2 {
       font-family: $font1;
     }
-    button {
-      margin-left: 14px;
-      height: 30px;
-      width: 100px;
-      color: white;
-      background-color: green;
-      cursor: pointer;
-      @extend %btn;
-    }
-    button:hover {
-      @extend %temp;
-    }
+   
+    
+    
   }
 }

@@ -5,7 +5,8 @@ const initState = {
 
   sort: {
     view: "all",
-    items: [],
+    sort:'' 
+   
   },
 
   cart: [],
@@ -124,12 +125,11 @@ const sort = (state = initState.sort, action) => {
     return {
       ...state,
       view: action.payload.view,
-      items: action.payload.items.filter((e) =>
-        action.payload.view !== "all" ? e.tag === action.payload.view : true
-      ),
+      sort:''
+      
     };
   } else if (action.type === "searchItem") {
-    return { ...state, view: "custom", items: action.payload };
+    return { ...state, view: "custom",sort:action.payload};
   } else {
     return { ...state };
   }

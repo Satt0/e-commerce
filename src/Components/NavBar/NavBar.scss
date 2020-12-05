@@ -1,0 +1,82 @@
+@import "../../App.scss";
+
+.NavBar {
+  min-height: 43px;
+  z-index: 121;
+  @extend %setting;
+  background-color: $colorTheme;
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: auto;
+  font-size: 20px;
+  #dropdown-btn {
+    z-index: 12132;
+    position: absolute;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    @media only screen and (min-width: $navbar-width-toggle) {
+      display: none;
+    }
+    .hamburgur {
+      border-bottom: 3px solid white;
+      width: 80%;
+    }
+  }
+  .show,
+  form {
+    // animation: showup 0.2s forwards;
+    margin-top: 4px;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    @media only screen and (max-width: $navbar-width-toggle) {
+      width: 100vw;
+
+      margin: 2px 27% 2px 20%;
+    }
+    z-index: 12123;
+    .input#search {
+      height: 23px;
+      border: none;
+      border-radius: 3px;
+      text-align: center;
+    }
+    .input#btn {
+      height: 30px;
+
+      border: none;
+      margin-left: 3px;
+      border-radius: 3px;
+      cursor: pointer;
+      @extend %btn;
+      margin-right: 6px;
+    }
+  }
+  @media only screen and (max-width: $navbar-width-toggle) {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    min-height: 50px;
+    form.show {
+      height: 50px;
+      align-items: flex-end;
+    }
+
+    form.hide {
+      display: none;
+    }
+  }
+}

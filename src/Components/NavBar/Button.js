@@ -1,8 +1,8 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
+import {useLocation} from 'react-router-dom'
 export default function Button({show,toggleSearch}) {
-    const view=useSelector(state=>state.view)
-    return view==='home'?(<button onClick={toggleSearch.bind(this)} className={show?"have-border":''}>
+  const location=useLocation().pathname
+    return location==='/'?(<button id="dropdown-btn" onClick={toggleSearch.bind(this)} className={show?"have-border":''}>
           
     <div className={show?"hamburgur top":"hamburgur"}></div>
     <div className={show?"hamburgur middle":"hamburgur"}></div>

@@ -1,18 +1,30 @@
 import React from 'react'
 import {useDispatch} from 'react-redux';
-import API from '../../API';
-
+import Button from '../../SmallComponents/Button'
 export default function Search(props) {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const refInput=React.createRef();
-   
+   const dispatch = useDispatch();
     function onSubmit(e){
         e.preventDefault();
-        API.getItemByName(refInput.current.value).then(items=>{
-          dispatch({type:'searchItem',payload:items})
-        })
+        // API.getItemByName(refInput.current.value).then(items=>{
+        //   dispatch({type:'searchItem',payload:items})
+        // })
+        // const options = {
+        //   includeScore: false,
+        //   minMatchCharLength:Math.max(refInput.current.value.toString().length-2,1),
+        //   keys: [
+        //     'name'
+        //   ]
+        // }
         
+        // // Create a new instance of Fuse
+        // const fuse = new Fuse(items, options)
         
+        // // Now search for 'Man'
+        // const result = fuse.search(refInput.current.value.toString())
+        
+        dispatch({type:'searchItem',payload:refInput.current.value.toString()})
     }
     return (
      
@@ -30,7 +42,8 @@ export default function Search(props) {
             className="input"
             ref={refInput}
           />
-          <input id="btn" type="submit" value="Search" className="input" />
+          {/* <input id="btn" type="submit" value="Search" className="input" /> */}
+          <Button theme={{width:'90px',height:'30px',color:'red'}}  title="search" />
         </form>
 
  )

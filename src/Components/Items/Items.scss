@@ -14,9 +14,9 @@
   font-family: $fontItem;
   font-size: 15px;
 
-  @media only screen and (orientation: portrait) {
-    justify-content: space-around;
-  }
+  // @media only screen and (orientation: portrait) {
+  //   justify-content: -around;
+  // }
 
   .ItemList {
     position: relative;
@@ -33,14 +33,17 @@
       width: 100px;
       position: relative;
       background-color: #fffafa;
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
       color: rgb(59, 6, 6);
       .price {
         color: rgb(34, 218, 34);
       }
       .price.OFS {
-        font-size: 14px;
-        transform: rotate(4deg);
+        font-size: 16px;
+        transform: translateY(-10px);
       }
       .hover-container {
         z-index: 6;
@@ -101,33 +104,8 @@
         }
       }
 
-      h4 {
-        position: absolute;
-        top: 70px;
-        margin: 10px auto;
-        width: 100%;
-        text-align: center;
-        font-size: 13px;
-      }
-      .add-btn {
-        position: absolute;
-        top: 115px;
-        overflow: hidden;
-        height: 20px;
-        font-size: 11px;
-
-        display: block;
-        width: 80%;
-        box-sizing: border-box;
-        margin: 0 10px;
-
-        @extend %btn;
-
-        cursor: pointer;
-      }
-      .add-btn:hover {
-        @extend %temp;
-      }
+   
+     
     }
     .addedToCart {
       color: rgb(118, 175, 52);
@@ -144,7 +122,7 @@
       }
     }
     .addedToCart.add {
-      transform: translateY(-35px);
+      transform: translateY(-10px);
       opacity: 1;
       z-index: 6;
 

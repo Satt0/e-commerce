@@ -13,9 +13,7 @@ html {
     appearance: none;
    
   }
-  button:active {
-    border-style: outset !important;
-  }
+  
   input[type="color"],
   input[type="date"],
   input[type="datetime"],
@@ -35,110 +33,18 @@ html {
     font-size: 16px !important;
   }
 }
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+}
 .App {
-  position: absolute;
+  position: relative;
 
   top: 0px;
   left: 0px;
   right: 0px;
-  .NavBar {
-    min-height: 43px;
-    z-index: 121;
-    @extend %setting;
-    background-color: $colorTheme;
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    height: auto;
-    font-size: 20px;
-    button {
-      position: absolute;
-      @extend %btn;
-      right: 14px;
-      top: 9px;
-      display: none;
-      min-height: 20px;
-      max-height: 50px;
-      color: black;
-      border-radius: 3px;
-      width: 40px;
-      .hamburgur {
-        border-bottom: 2px solid white;
-        margin-top: 4px;
-        margin-bottom: 4px;
-        transition: all 0.3s;
-        background-color: green;
-        padding: 0;
-      }
-      .hamburgur.top {
-        -webkit-transform: translateY(6px) rotate(28deg);
-        -ms-transform: translateY(6px) rotate(28deg);
-        -o-transform: translateY(6px) rotate(28deg);
-        transform: translateY(6px) rotate(28deg);
-      }
-      .hamburgur.middle {
-        opacity: 0;
-      }
-      .hamburgur.bottom {
-        -webkit-transform: translateY(-6px) rotate(-28deg);
-        -ms-transform: translateY(-6px) rotate(-28deg);
-        -o-transform: translateY(-6px) rotate(-28deg);
-        transform: translateY(-6px) rotate(-28deg);
-      }
-    }
-    button.have-border {
-      background-color: "";
-    }
-
-    .show,
-    form {
-      animation: showup 0.2s forwards;
-      margin-top: 4px;
-      box-sizing: border-box;
-      position: relative;
-
-      overflow: hidden;
-      @media only screen and (max-width: $navbar-width-toggle) {
-        width: 100vw;
-
-        margin: 2px 27% 2px 20%;
-      }
-      z-index: 12123;
-      .input#search {
-        height: 23px;
-        border: none;
-        border-radius: 3px;
-        text-align: center;
-      }
-      .input#btn {
-        height: 30px;
-
-        border: none;
-        margin-left: 3px;
-        border-radius: 3px;
-        cursor: pointer;
-        @extend %btn;
-        margin-right: 6px;
-      }
-    }
-    @media only screen and (max-width: $navbar-width-toggle) {
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-
-      min-height: 50px;
-      button {
-        display: block;
-        z-index: 1212;
-      }
-      form.hide {
-        display: none;
-      }
-    }
-
-     }
+  
   .main {
     @extend %setting;
 
@@ -153,9 +59,9 @@ html {
       height: 100vh;
     }
     .Items {
-      width: 95vw;
+      width: 100%;
       @extend %setting;
-
+      overflow: hidden;
       height: 100vh;
       background-image: url("https://img.zing.vn/gn/images/data/000Thang12014/000/T4_1_1920x1200.jpg");
       background-position: right;
