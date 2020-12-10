@@ -15,9 +15,10 @@ export default function SignIn() {
     };
     API.SignIn(infor).then((res) => {
       if (res.result === true) {
+        localStorage.setItem('refreshToken',res.refreshToken);
         dispatch({
           type: "logIn",
-          payload: { name: res.name, money: res.money, id: res.id },
+          payload: { name: res.name, money: res.money, token:res.token,refresh:res.refreshToken },
         });
       } else {
         if (res.log === "not_found") {

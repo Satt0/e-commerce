@@ -1,4 +1,4 @@
-@import '../../App.scss';
+@import "../../App.scss";
 
 .Login-Container {
   position: absolute;
@@ -6,8 +6,8 @@
   height: 100vh;
   top: 0;
   right: 0;
-  @include backgroundImage('https://i.pinimg.com/originals/fa/65/a8/fa65a8d5772b9e322970814d00b3e2dc.jpg');
-
+  // @include backgroundImage('https://i.pinimg.com/originals/fa/65/a8/fa65a8d5772b9e322970814d00b3e2dc.jpg');
+  background-color: yellowgreen;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +30,7 @@
         width: 50%;
         padding: 0;
         text-align: center;
-        margin-top:10px;
+        margin-top: 10px;
         padding-bottom: 6px;
       }
       div.selected {
@@ -44,74 +44,78 @@
       justify-content: center;
       align-items: center;
       form {
-        
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        .input-container{
-          opacity:0;
+        .input-container {
+          opacity: 0;
           display: flex;
           flex-direction: row;
           justify-items: center;
-          input{
-            border:none;
+          input {
+            border: none;
             margin-bottom: 10px;
             box-shadow: 1px 3px 1px rgba(0, 0, 0, 0.2);
-            text-align:center;
-            background-color:#d1d1d1;
-            transition: all .2s;
+            text-align: center;
+            background-color: #d1d1d1;
+            transition: all 0.2s;
           }
-          input:focus{
-            transition: all .2s;
+          input:focus {
+            transition: all 0.2s;
             transform: scale(1.13) translateX(15px);
             box-shadow: 2px 4px 2px rgba(0, 0, 0, 0.4);
-            
           }
-          
-          div.SignIn,div.SignUp{
-            transition: all .2s;
-            width:28px;
-            height:28px;
+
+          div.SignIn,
+          div.SignUp {
+            transition: all 0.2s;
+            width: 28px;
+            height: 28px;
             border-radius: 5px;
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
             box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
             display: inline-block;
             z-index: 1233;
           }
-          .Username{
-            @include backgroundImage('https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png')
+          .Username {
+            @include backgroundImage(
+              "https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png"
+            );
           }
-          .Password{
-            @include backgroundImage('data:image/png;base64,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')
+          .Password {
+            @include backgroundImage(
+              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAdVBMVEX///8AAAClpaXo6OiXl5eysrL5+fnu7u67u7tBQUGFhYWTk5NycnKtra1ra2sYGBjNzc3e3t4kJCSenp709PSMjIwsLCzBwcHHx8cQEBDT09PY2NhQUFBWVlY8PDx5eXkwMDBkZGQeHh4NDQ1JSUl+fn5cXFzTLp5AAAAGL0lEQVR4nO2da3+yPAyHJyh4PuJx96Zzc9//Iz6P28+0BRRsExNc/q9Nmgtqz6QvLyqVSqVSqVRISnaj9rg3af1q0hu3R7uEOyg0xdF+1SrTah/FzcecnnqldBe9n6ZNhpz1y1+eq3n/lTtQT61vvz1bvS53sB7qHGvznXXscAd8p7rvd/GddWjSe3z9dzffWV+N+T/2vfjOOnGHXku7z7LY52+DzmaW/vwinW06g7d52c+2O+boa6hdDPv9tJ6V/DJe70v+re2HR3yfsu98xIflrX/XbFCA/E4fFq2HZvmq9zGttJmO8xW67IUL0TQX6zCuZRbvc3bVj4VJXTfOcT2+s+Khayq0axw5QfbuexE7d4g3IooxSB0nxMXd9gvHXuAgbh3cWLjN1Bo9wkC9Ov9ATydOqypsCBeH1dCLnJpav6F6gBK7nQhpCO3muCdp8m839mGdmd2lDpGiQ1AHDdBFFNOg2n/CTbC3jcC/ojXfxeiprZHDPwR3CLLqaB/FoTWDFlFPsy3E84Xk8gs8TjIklyGynjhWOBl2rQjSzESDN9CyhoD8jY3pCjG7L+N1j+jVS6an2GKuPqSfYl6imZ5HqH4jKS/RtAkHZM9mT4e3OTWTAeyFBzMG95+qYAie9BHd9WXDuLVCd32HdvCg8RdWzOCNcx3ctDMEziW0NQlUUoqhBwyWVnxTYVNJKZapzdIPXzVdXkLokbiHpZEBifs6gonhksQ9PEC2aWJGXI3Mn4Cr04cllTlNU5DBEjHXVg0MaN6ICnjjHtbsqQOAR8jVIx4uAYQvsJULlt0ORAVUCRoCqimcmXwSFVChjL585sYUGvM5WRFwcoxnVAPLRXQdMgwpeHYTYSWYbgcFNhR5VoZhAkczZjsLxm08+/qwWER3jAkOWOEuc9UVENKNOBZCCOmKf0ARzMUrIbGUsBlFMBevhMRSwmYUwVy8EhJLCZtRBHPxSkgsJWxGEbcE6zR0iygPKOJHSWcIByMEaTLs4Ox5pcvqwti0RDhq1pX4+oy2wSeVBtwIlQrc5JcPGIjYrfYvQAEVNd1WuxegiX9zI7kVteW9cZJwR15bvv2i9SFFm/ssclGx9V287+abOU4uMw+AOVHku4MJfb3ULADwFn3P78IjkldFfxV8ViPUnl5KSG1PLyWktqeXElLb00sJqe3ppYTU9vRSQmp7eikhtT29lJDanl5KSG1fULoZjaLRaIOWm0AUYdYdWivowy7KNyKCCONi1tYTwvqWGMLsVOA7qx/8HqUQrkuz0v6vz9CP3oQQ3trfCfzKXQZhPgGrK98EhDgRohB+3ARstT5CnEsgHJZROQr5LkwAYeTSzMeDaDDOJRsOOO/ETzizSeaLSw8YLxxI/5QT/IR29vmFvVGb2Hk8/b/QZCe0NpELWWntjLPehynYCU1W03lx+JKZTFDeiUO4CU0Wy9JMZ9ZZFt+xDTfhuILAPAHffp+ZMKkEMI/A87gIM6F5RdfSOpssQp7VlJkQTkpcb0igKfI87cFMCBdBXB+0wJDnmyXCUHtoKq/nz4EcPhOWCEPtwfz6VD7FKsLPHI2QtwhKe/oi5BMmT084e3pCOEfuOfaWTwjZwjzX3MQTmkxTnt81iSc0S/2eK/zSCc1FD++eHoQTWlfT+B6zlk1oX/vhu6EomTC2F/u9dy/kEqbOdqJ/vnqphEluN8r/yyyhhO71Y0E7bCIJd4ccYMN3Zgoa5fjC9kgFEkZ5wLCEiPII85dcfgWerJFH6F5EvgrO2SmO0LkEcoWQJ0EcoXWV7iTCyIcgjtAALnDyPcglxEp8LJdQikNxAaE7FBcQukNxAaE7FBcQukNxAaE7FBcQukNxAaE7RA9oEf0KLQG4OEJ0KSG1Pb2UkNpevkNxAaE7FBcQukNxAaE7FBcQukNxAaE7FBcQukNxAaE7FBcQukP0gNClhNT29FJCant6KSG1Pb2UkNqeXkpIbU8vJaS2p5cSUtvTSwmp7emlhNT29FJCant6KSG1Pb3QCJ/2boTnv9/i+e8oef57Zp7/rqDnv+/pJZV9b95FAXd2Pf+9a3/g7rwmIAYC/oE7LP/APaQvP3fJHrlRSnTEuktWpVKpVCpV8/UfjG8+BJHcxP8AAAAASUVORK5CYII="
+            );
           }
-          .Name{
-            @include backgroundImage('https://w0.pngwave.com/png/351/238/computer-icons-authentication-name-icon-png-clip-art.png')
+          .Name {
+            @include backgroundImage(
+              "https://w0.pngwave.com/png/351/238/computer-icons-authentication-name-icon-png-clip-art.png"
+            );
           }
         }
-        .input-container:focus-within > div.SignIn{
+        .input-container:focus-within > div.SignIn {
           transform: scale(1.1) translateY(-2px);
           transition: all 0.3s;
-         
+
           box-shadow: 2px 4px 2px rgba(0, 0, 0, 0.4);
           background-color: rgba(255, 255, 255, 0.1);
         }
         @for $i from 1 to 5 {
-          .input-container:nth-child(#{$i}){
-            animation:slide-left 0.3s forwards;
+          .input-container:nth-child(#{$i}) {
+            animation: slide-left 0.3s forwards;
             animation-delay: $i * 90ms;
           }
         }
-        
-       button{
-        @extend %btn;
-        margin-top: 15px;
-        height:30px;
-        width:70px;
-       }
+
+        button {
+          @extend %btn;
+          margin-top: 15px;
+          height: 30px;
+          width: 70px;
+        }
       }
     }
   }
-  
 }

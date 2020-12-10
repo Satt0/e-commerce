@@ -5,27 +5,32 @@ import API from "../../API";
 import "./UserProfile.scss";
 export default function UserProfile() {
   const dispatch = useDispatch();
+  const refreshId=useSelector(state=>state.user.refresh)
 
   const [history, setHistory] = useState([]);
   const user = useSelector((state) => state.user);
 
-  const onLogout = () => {
-    API.logOut().then((res) => {
+  const onLogout = async () => {
+  await  API.logOut(refreshId).then((res) => {
       if (res.result) {
+        localStorage.clear('refreshToken')
         dispatch({ type: "logOut" });
       }
     });
   };
 
-  useEffect(() => {
-    API.getHistory(user.id).then((res) => {
-      if (res) {
-        setHistory(res.history);
-      } else {
-        setHistory([]);
-      }
-    });
-  }, [user.id]);
+  // useEffect(() => {
+  //   API.getHistory(user.id).then((res) => {
+  //     if (res) {
+  //       setHistory(res.history);
+  //     } else {
+  //       setHistory([]);
+  //     }
+  //   });
+  //   return ()=>{
+  //     setHistory([])
+  //   }
+  // }, []);
   return (
     <div className="UserProfile">
       <div className="UserProfile-Infor">

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 const Title = styled.p`
   text-align: center;
-  color:${props=>props.theme.color};
+  color: ${(props) => props.theme.color};
 `;
 
 const Wrapper = styled.button`
@@ -10,15 +10,17 @@ const Wrapper = styled.button`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width:${props=>props.theme.width};
-  height:${props=>props.theme.height};
+  width: ${(props) => props.theme.width};
+  background-color: ${(props) => props.theme.bgColor};
+  transition: 0.4s all;
+  height: ${(props) => props.theme.height};
   position: relative;
   overflow: hidden;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 `;
-export default function Button({ onClick, title ,theme }) {
+export default function Button({ onClick, title, theme}) {
   
   return (
     <Wrapper onClick={onClick} theme={theme}>

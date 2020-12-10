@@ -2,13 +2,15 @@
 import React from 'react'
 import Button from "../../../SmallComponents/Button";
 export default function MainInfor({props,addToCart,isAdded}) {
+  
+
     return (
         <div className="main-infor">
         <div className="hover-container">
           <div className="img-container">
             <img
               className="img"
-              src={props.item.URL}
+              src={props.item.url}
               alt={props.item.description}
             />
           </div>
@@ -23,20 +25,14 @@ export default function MainInfor({props,addToCart,isAdded}) {
               <span className="title-text">mô tả: </span>
               {props.item.description}
             </h5>
-            <h5>
-              <span className="title-text">phẩm chất: </span>
-              {props.item.perfection}
-            </h5>
-            <h5>
-              <span className="title-text">hiệu lực: </span>
-              {props.item.lastFor}
-            </h5>
+            
+            
             <h5>
               <span className="title-text">số lượng: </span>
               {props.item.quantity.substring(0, 10)}
             </h5>
             <h5>
-              <span className="title-text">giá: </span> {props.item.price} coin
+              <span className="title-text">giá: </span> {props.item.price} VND
             </h5>
           </div>
         </div>
@@ -50,9 +46,9 @@ export default function MainInfor({props,addToCart,isAdded}) {
         {props.item.quantity > 0 ? (
           <>
             {" "}
-            <h5 className="price">{props.item.price} coin</h5>
+            <h5 className="price">{props.item.price} VND</h5>
             <Button
-              theme={{ height: "25px", color: "red", width: "78px" }}
+              theme={{ height: "28px", color: 'red', width: "150px" }}
               onClick={addToCart}
               title={isAdded === -1 ? "Add to cart" : "Remove"}
             />

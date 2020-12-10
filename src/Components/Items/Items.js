@@ -45,7 +45,7 @@ const Items = () => {
           Loading!
         </h2>
       ) : (
-        data.map((e, i) => <ItemList key={e._id} item={e} />)
+        data.map((e) => <ItemList key={e._id} item={e} />)
       )}
     </div>
   );

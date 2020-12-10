@@ -26,12 +26,12 @@ const useStyles = makeStyles((theme) => ({
 export default function CheckboxList() {
   const tag = [
     { tag: "all", name: "all" },
-    { tag: "weapon", name: "weapon" },
-    { tag: "pet", name: "pet" },
-    { tag: "item", name: "item" },
-    { tag: "shirt", name: "ao" },
-    { tag: "hat", name: "non" },
-    { tag: "petWeapon", name: "vk pet" },
+    { tag: "beauties", name: "beauty" },
+    { tag: "electronics", name: "electronic" },
+    { tag: "ultilities", name: "ulti" },
+    { tag: "accessories", name: "access" },
+    // { tag: "hat", name: "non" },
+    // { tag: "petWeapon", name: "vk pet" },
     // { tag: "custom", name: "custom" },
   ];
   // const items = useSelector((state) => state.items);

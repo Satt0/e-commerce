@@ -2,6 +2,7 @@
 @import "./helper//placeholders";
 @import './helper//animations';
 html {
+  
   a{
     text-decoration: none !important;
   }
@@ -11,8 +12,11 @@ html {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+
    
   }
+  button:focus {outline:0;}
+
   
   input[type="color"],
   input[type="date"],
@@ -49,6 +53,7 @@ html {
     @extend %setting;
 
     display: flex;
+  
     flex-direction: row;
 
     .SidePanel {
@@ -63,7 +68,8 @@ html {
       @extend %setting;
       overflow: hidden;
       height: 100vh;
-      background-image: url("https://img.zing.vn/gn/images/data/000Thang12014/000/T4_1_1920x1200.jpg");
+      background-color: rgb(87, 172, 163);
+      // background-image: url("https://img.zing.vn/gn/images/data/000Thang12014/000/T4_1_1920x1200.jpg");
       background-position: right;
       background-repeat: no-repeat;
       background-size: cover;
@@ -72,11 +78,11 @@ html {
       flex-direction: column;
       .SidePanel {
         height: 10vh;
-        width: 100vw;
+        width: 100%;
       }
       .Items {
         height: 90vh;
-        width: 100vw;
+        width: 100%;
       }
     }
   }

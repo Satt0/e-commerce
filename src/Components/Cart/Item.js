@@ -1,39 +1,41 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Button from '../../SmallComponents/Button'
-export default function Item({
-  id,
-  item: {_id,thisQuantity ,status}
-}) {
+import Button from "../../SmallComponents/Button";
+export default function Item({ id, item }) {
   //input quantity
-  const inputRef = React.createRef();
+  const inputRef = useRef(null);
   // state's quantity
-  const count = useSelector((state) => state.cart[id].thisQuantity);
-  
-  const item=useSelector(state=>state.items)
-  const src=item.find(e=>e._id===_id);
+
+  const src = item;
 
   const dispatch = useDispatch();
 
-//  
-  function changeQuantity(e) {
-    if (inputRef.current.value <= Number(src.quantity)) {
+  //
+  function changeQuantity() {
+    if (
+      inputRef.current.value <= Number(item.quantity) &&
+      inputRef.current.value >= 1
+    ) {
       dispatch({
-        type: "addQuantity",
-        payload: { id: id, count: inputRef.current.value },
+        type: "changeQuantity",
+        payload: { _id: item._id, quantity: Number(inputRef.current.value) },
       });
     } else {
-      window.alert(`There is only ${src.quantity} pieces left, you have entered ${inputRef.current.value} !`);
-      inputRef.current.value=Math.floor(inputRef.current.value/10)
+      alert("too much");
+      inputRef.current.value = item.quantity;
     }
   }
-  function deleteFromCart(){
-    dispatch({type:'deleteFromCart',payload:_id})
+  function deleteFromCart() {
+    dispatch({ type: "addToCart", payload: {_id:item._id }});
   }
   return (
     <div className="Cart-List-Item">
-      <h5>{src.name.length>12?src.name.substring(0,10).trim()+'...':src.name}</h5>
-      <img src={src.URL} alt={src.name} />
+      <h5>
+        {src.name.length > 12
+          ? src.name.substring(0, 10).trim() + "..."
+          : src.name}
+      </h5>
+      <img src={src.url} alt={src.name} />
       <form>
         {/* <label htmlFor="count">quantity</label> */}
         <input
@@ -41,18 +43,22 @@ export default function Item({
           type="number"
           min="1"
           ref={inputRef}
-          defaultValue={thisQuantity}
-          max={Number(src.quantity)}
+          defaultValue={item.thisQuantity}
+          max={src.quantity}
           step="1"
           onChange={() => {
             changeQuantity();
           }}
         />
       </form>
-        <h5>{src.quantity} left</h5>
-      <h4 className="price">$: {count * Number(src.price)}</h4>
-      <Button onClick={deleteFromCart} title="delete" theme={{width:'76px',height:'25px',color:'red'}}/>
-        <h6>{status}</h6>
+      <h5>{src.quantity} left</h5>
+      <h4 className="price">$: {Number(item.price) * item.thisQuantity}</h4>
+      <Button
+        onClick={deleteFromCart}
+        title="delete"
+        theme={{ width: "76px", height: "25px", color: "red" }}
+      />
+      {/* <h6>{status}</h6> */}
     </div>
   );
 }

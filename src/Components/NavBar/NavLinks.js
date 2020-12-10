@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 import CartCounter from './smallerComponents/CartCounter'
 export default function NavLinks() {
     // const view=useSelector(state=>state.view);
-    const count=useSelector(state=>state.cart.length)
+    const count= useSelector(state=>state.items.filter(e=>e.cart).length)
     const user=useSelector(state=>state.user.name);
     //  const dispatch = useDispatch();
     //  function setView(e){
