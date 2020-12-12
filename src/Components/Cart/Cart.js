@@ -18,7 +18,7 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   async function makeDeal() {
-    if (!user) {
+    if (user!=='in') {
       url.push('/user')
     } else {
       if (cart.length > 0) {

@@ -27,7 +27,7 @@ export default function LoginUI() {
           Sign Up
         </div>
       </div>
-      {state === "signin" ? <SignIn /> : <SignUp />}
+       <SignIn sign={state}/> 
     </div>
   );
 }

@@ -1,18 +1,18 @@
 
-import React from 'react'
-import Button from "../../../SmallComponents/Button";
+import React,{useState} from 'react'
+import {Button} from "react-bootstrap";
 export default function MainInfor({props,addToCart,isAdded}) {
   
-
+   
     return (
         <div className="main-infor">
         <div className="hover-container">
-          <div className="img-container">
-            <img
+          <div className="img-container" style={{backgroundImage:`url(${props.item.url})`}}>
+            {/* <img
               className="img"
               src={props.item.url}
               alt={props.item.description}
-            />
+            /> */}
           </div>
 
           <div className="hover">
@@ -41,17 +41,19 @@ export default function MainInfor({props,addToCart,isAdded}) {
             ? props.item.name.substring(0, 10).trim() + "..."
             : props.item.name}
         </h5>
-        <h5>{props.item.quantity > 0 ? `${props.item.quantity} left` : ""}</h5>
+        {/* <h5>{props.item.quantity > 0 ? `${props.item.quantity} left` : ""}</h5> */}
 
         {props.item.quantity > 0 ? (
           <>
             {" "}
             <h5 className="price">{props.item.price} VND</h5>
             <Button
-              theme={{ height: "28px", color: 'red', width: "150px" }}
+             
+              // theme={{ height: "28px", color: 'red', width: "150px" }}
               onClick={addToCart}
-              title={isAdded === -1 ? "Add to cart" : "Remove"}
-            />
+              variant={!isAdded?'danger':'primary'}
+              
+            >{isAdded  ? "Add to cart" : "Remove"}</Button>
           </>
         ) : (
           <h5 className="price OFS">out of stock!!</h5>

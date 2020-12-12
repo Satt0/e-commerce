@@ -25,7 +25,7 @@ export default function ItemList(props) {
 
   return (
     <div className="ItemList">
-        <MainInfor addToCart={addToCart} props={props} isAdded={isAdded}/>
+        <MainInfor addToCart={addToCart} props={props} isAdded={isAdded>=0?0:1}/>
 
       {/* <div className={isAdded !== -1 ? "addedToCart add" : "addedToCart"}>
         <h4>{isAdded !== -1 ? "Added" : "Removed"}</h4>

@@ -6,6 +6,8 @@ import HomeContainer from "./Components/Container/HomeContainer";
 import CartContainer from "./Components/Container/CartContainer";
 import { useSelector, useDispatch } from "react-redux";
 import { url } from "./API";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // import socketIOClient from "socket.io-client";
 import API from "./API";
 import { Switch, Route } from "react-router-dom";
@@ -57,6 +59,7 @@ const App = () => {
           }
           else{
             dispatch({type:"logOut"})
+            localStorage.clear('refreshToken')
             clearInterval(a);
           }
         
@@ -89,6 +92,9 @@ const App = () => {
             }
             else{
               dispatch({type:"logOut"})
+              localStorage.clear('refreshToken')
+
+
              
             }})
           }
