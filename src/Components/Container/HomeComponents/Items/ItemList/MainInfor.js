@@ -1,20 +1,23 @@
 
 import React,{useState} from 'react'
 import {Button} from "react-bootstrap";
+import {Link} from 'react-router-dom'
+
 export default function MainInfor({props,addToCart,isAdded}) {
   
    
     return (
         <div className="main-infor">
         <div className="hover-container">
-          <div className="img-container" style={{backgroundImage:`url(${props.item.url})`}}>
-            {/* <img
-              className="img"
-              src={props.item.url}
-              alt={props.item.description}
-            /> */}
-          </div>
+         <Link to={`/item/${props.item._id}`}>
+         
+         <div className="img-container" title="click to see more" style={{backgroundImage:`url(${props.item.url})`}}>
 
+            </div>
+  
+         </Link>
+
+{/* 
           <div className="hover">
             <h5>
               <span className="title-text">vật phẩm: </span>
@@ -35,6 +38,9 @@ export default function MainInfor({props,addToCart,isAdded}) {
               <span className="title-text">giá: </span> {props.item.price} VND
             </h5>
           </div>
+        */}
+       
+       
         </div>
         <h5>
           {props.item.name.length > 10
@@ -58,6 +64,7 @@ export default function MainInfor({props,addToCart,isAdded}) {
         ) : (
           <h5 className="price OFS">out of stock!!</h5>
         )}
+        
       </div>
     )
 }

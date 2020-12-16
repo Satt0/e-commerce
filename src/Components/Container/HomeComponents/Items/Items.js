@@ -1,11 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
 import ItemList from "./ItemList/ItemList";
 
 import Fuse from "fuse.js";
 import "./Items.scss";
 
 const Items = () => {
+  const dispatch = useDispatch()
   const view = useSelector((state) => state.sort.view);
   const keyword = useSelector((state) => state.sort.sort);
   const db = useSelector((state) => state.items);
@@ -29,7 +30,7 @@ const Items = () => {
 
     // Now search for 'Man'
     data = fuse.search(keyword).map(e=>e.item);
-    
+ 
   }
 
   return (
@@ -42,7 +43,7 @@ const Items = () => {
             textShadow: "1px 1px 5px black",
           }}
         >
-          Loading!
+          NULL!
         </h2>
       ) : (
         data.map((e) => <ItemList key={e._id} item={e} />)

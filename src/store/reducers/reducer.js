@@ -13,7 +13,7 @@ const initState = {
     loggedIn: null,
     name: null,
     money: null,
-  
+    id:null,
     JWT:null,
     refresh:null
   }
@@ -100,7 +100,7 @@ const user = (state = initState.user, action) => {
       loggedIn: "in",
       name: action.payload.name,
       money: action.payload.money,
-      
+      id:action.payload.id,
       JWT:action.payload.token,
       refresh:action.payload.refresh
     };
@@ -109,7 +109,7 @@ const user = (state = initState.user, action) => {
       ...state,
       loggedIn: "out",
       name: null,
-     
+      id:null,
       JWT:null,
       money:null,
       refresh:null

@@ -1,4 +1,4 @@
-@import "../Items/Items.scss";
+
 @import "../../App.scss";
 .Cart {
   // background-image: url("https://img.zing.vn/gn/images/data/000Thang52014/016/1920x1200-T8.jpg");
@@ -26,7 +26,7 @@
     min-height: 300px;
     overflow: hidden;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
     overflow-y: scroll;
@@ -50,7 +50,8 @@
       margin: 5px;
       text-align: center;
       height: 190px;
-      width: 120px;
+      width:25vw;
+      max-width: 130px;
       position: relative;
       border: 1px solid gray;
 
@@ -95,6 +96,9 @@
   &-Payment {
     color: white;
     font-size: 20px;
+    margin-top: 12px;
+    width:15%;
+    min-width: 120px;
     display: flex;
     flex-direction: row;
     align-items: center;

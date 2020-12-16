@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Button from "../../SmallComponents/Button";
+import {Button} from 'react-bootstrap';
 export default function Item({ id, item }) {
   //input quantity
   const inputRef = useRef(null);
@@ -55,9 +55,9 @@ export default function Item({ id, item }) {
       <h4 className="price">$: {Number(item.price) * item.thisQuantity}</h4>
       <Button
         onClick={deleteFromCart}
-        title="delete"
-        theme={{ width: "76px", height: "25px", color: "red" }}
-      />
+       variant="danger"
+      size="sm"
+      >delete</Button>
       {/* <h6>{status}</h6> */}
     </div>
   );

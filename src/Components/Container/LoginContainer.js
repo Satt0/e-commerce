@@ -12,7 +12,7 @@ export default function LoginContainer() {
   
   return (
     <div className="Login-Container">
-      {loggedIn==="in" ? <Login /> : <LoginUI onClose={onClose} />}
+      {loggedIn!==null?loggedIn==="in" ? <Login /> : <LoginUI onClose={onClose} />:''}
     </div>
   );
 }
