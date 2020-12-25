@@ -43,12 +43,11 @@ export default function CheckboxList() {
 
   const dispatch = useDispatch();
   const handleToggle = (value) => async () => {
-    dispatch({ type: "setSort", payload: { view: value.tag} });
+    dispatch({ type: "setSort", payload: { view: value.tag } });
   };
 
   return (
     <List className={!matches ? classes.root : classes.landscape}>
-      
       {tag.map((value, index) => {
         const labelId = `checkbox-list-label-${value.name}`;
 

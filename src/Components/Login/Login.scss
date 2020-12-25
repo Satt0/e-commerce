@@ -1,24 +1,32 @@
 @import "../../App.scss";
 
 .Login-Container {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100vh;
+  height:99vh;
+background-position: left;
 
-  // @include backgroundImage('https://i.pinimg.com/originals/fa/65/a8/fa65a8d5772b9e322970814d00b3e2dc.jpg');
-  background-color: yellowgreen;
+  @include backgroundImage('https://previews.123rf.com/images/seamartini/seamartini1607/seamartini160700451/60381287-shopping-items-and-gifts-seamless-pattern-background-wallpaper-with-vector-icons-of-smartphone-shopp.jpg');
+  // background-color: rgb(28, 167, 97);
   display: flex;
-  justify-content: center;
+  
   align-items: center;
+  &.user-in{
+    justify-content: center;
+    background-position: center;
+  }
+  justify-content: flex-end;
   .LoginUI {
-    z-index: 1231231231;
+    z-index: 0;
     width: 50vw;
     min-width: 300px;
+    @media only screen and (max-width:643px) {
+      width:100vw;
+    }
     // min-height: 290px;
-    // height: 40vh;
+    height: 100vh;
     background-color: white;
-    animation: LoginUIanimation 0.9s;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    // animation: LoginUIanimation 0.9s;
     .change {
       display: flex;
       flex-direction: row;

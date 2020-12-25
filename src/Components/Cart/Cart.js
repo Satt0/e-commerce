@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Item from "./Item";
-import API from "../../API";
+import API from "API";
 import "./Cart.scss";
 import Timer from "./Timer";
 import { Button } from "react-bootstrap";
@@ -42,7 +42,7 @@ export default function Cart() {
         )}
       </div>
       <div className="Cart-Payment">
-        <Button onClick={makeDeal} variant="primary" size="lg" block>
+        <Button onClick={makeDeal} variant="primary" size="lg" block disabled={cart.length<=0}>
           Buy
         </Button>
       </div>

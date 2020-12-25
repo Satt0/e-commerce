@@ -5,24 +5,26 @@ import LoginContainer from "./Components/Container/LoginContainer";
 import HomeContainer from "./Components/Container/HomeContainer";
 import CartContainer from "./Components/Container/CartContainer";
 import { useSelector, useDispatch } from "react-redux";
-// import { url } from "./API";
+import { url } from "API";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-// import socketIOClient from "socket.io-client";
+import itemsAction from 'store/action/itemsAction'
+import userAction from 'store/action/userAction'
+import socketIOClient from "socket.io-client";
 import API from "./API";
+import Helmet from 'react-helmet'
 import { Switch, Route } from "react-router-dom";
 //use socket.io to update items in real time.
-// const ENDPOINT = url; //socket.io endpoint, same as api endpoint.
+const ENDPOINT = url; //socket.io endpoint, same as api endpoint.
 const App = () => {
   const dispatch = useDispatch();
-  console.log(typeof window);
+
 
   // const cart = useSelector((state) => state.cart);
   // const status = useSelector((state) => state.transaction.state);
   useEffect(() => {
     API.getAll().then((res) => {
       dispatch({
-        type: "updateItem",
+        type: itemsAction.updateItems,
         payload: res.map((e) => {
           return { ...e, cart: false, thisQuantity: 1 };
         }),
@@ -33,20 +35,20 @@ const App = () => {
   const key = useSelector((state) => state.user.refresh);
   const status = useSelector((state) => state.user.loggedIn);
 
-  // useEffect(() => {
-  //   //socket.io implementation, updates items based on transacton status(redux state)
-  //   const socket = socketIOClient(ENDPOINT);
+  useEffect(() => {
+    //socket.io implementation, updates items based on transacton status(redux state)
+    const socket = socketIOClient(ENDPOINT);
+    
+    // if (status === "success") {
+    //   socket.emit("update", cart);
+    // }
 
-  //   if (status === "success") {
-  //     socket.emit("update", cart);
-  //   }
+    socket.on("updateItem", (msg) => {
+     console.log(msg);
+    });
 
-  //   socket.on("updateItem", (msg) => {
-  //     dispatch({ type: "updateStock", payload: msg });
-  //   });
-
-  //   return () => socket.disconnect();
-  // }, [status,cart,dispatch]);
+    return () => socket.disconnect();
+  }, []);
 
   useEffect(() => {
     let a = null;
@@ -57,7 +59,7 @@ const App = () => {
             if (status !== "out") {
               
               dispatch({
-                type: "logIn",
+                type: userAction.logIn,
                 payload: {
                   name: res.user.name,
                   money: res.user.money,
@@ -68,7 +70,7 @@ const App = () => {
               });
             }
           } else {
-            dispatch({ type: "logOut" });
+            dispatch({ type: userAction.logOut });
             localStorage.clear("refreshToken");
             clearInterval(a);
           }
@@ -88,32 +90,37 @@ const App = () => {
       API.getInfor(refresh).then((res) => {
         if (res.token) {
           if (status !== "out") {
+            console.log(res.user.id);
             dispatch({
-              type: "logIn",
+              type: userAction.logIn,
               payload: {
                 name: res.user.name,
                 money: res.user.money,
                 token: res.token,
-                id:res.id,
+                id:res.user.id,
                 refresh: key,
               },
             });
           } else {
-            dispatch({ type: "logOut" });
+            dispatch({ type: userAction.logOut });
           }
         } else {
-          dispatch({ type: "logOut" });
+          dispatch({ type: userAction.logOut });
 
           localStorage.clear("refreshToken");
         }
       });
     } else {
-      dispatch({ type: "logOut" });
+      dispatch({ type: userAction.logOut });
     }
   }, []);
 
   return (
     <div className="App">
+      <Helmet>
+      <meta name="description" content="Shoping electronics, accessories, ultitilities" />
+          <meta name="theme-color" content="#008f68" />
+      </Helmet>
       <NavBar />
       {/* {currentview} */}
 

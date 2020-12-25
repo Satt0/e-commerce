@@ -1,12 +1,4 @@
-// import React from 'react'
 
-// export default function CartCounter({count}) {
-//     return (
-   
-//             <div id='cart'>Cart<div className="cart-count">{count}</div></div>
-        
-//     )
-// }
 
 import React from 'react';
 import Badge from '@material-ui/core/Badge';

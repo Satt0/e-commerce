@@ -3,16 +3,17 @@ import React,{useState} from 'react'
 import {Button} from "react-bootstrap";
 import {Link} from 'react-router-dom'
 
+import ulti from 'ultilities/ulti'
 export default function MainInfor({props,addToCart,isAdded}) {
+
   
-   
     return (
         <div className="main-infor">
         <div className="hover-container">
          <Link to={`/item/${props.item._id}`}>
          
          <div className="img-container" title="click to see more" style={{backgroundImage:`url(${props.item.url})`}}>
-
+              
             </div>
   
          </Link>
@@ -52,7 +53,7 @@ export default function MainInfor({props,addToCart,isAdded}) {
         {props.item.quantity > 0 ? (
           <>
             {" "}
-            <h5 className="price">{props.item.price} VND</h5>
+            <h5 className="price">{ulti.currencyConvert(props.item.price)} VND</h5>
             <Button
              
               // theme={{ height: "28px", color: 'red', width: "150px" }}

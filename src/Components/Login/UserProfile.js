@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import HistoryItem from "./HistoryItem";
-import API from "../../API";
+import API from "API";
 import "./UserProfile.scss";
+import userAction from 'store/action/userAction'
 import {Button} from 'react-bootstrap'
 export default function UserProfile() {
   const dispatch = useDispatch();
-  const refreshId=useSelector(state=>state.user.refresh)
-
+  const refreshId=useSelector(state=>state.user.id)
+  const token=useSelector(state=>state.user.JWT)
   const [history, setHistory] = useState([]);
   const user = useSelector((state) => state.user);
 
@@ -15,23 +16,24 @@ export default function UserProfile() {
   await  API.logOut(refreshId).then((res) => {
       if (res.result) {
         localStorage.clear('refreshToken')
-        dispatch({ type: "logOut" });
+        dispatch({ type: userAction.logOut });
       }
     });
   };
 
-  // useEffect(() => {
-  //   API.getHistory(user.id).then((res) => {
-  //     if (res) {
-  //       setHistory(res.history);
-  //     } else {
-  //       setHistory([]);
-  //     }
-  //   });
-  //   return ()=>{
-  //     setHistory([])
-  //   }
-  // }, []);
+  useEffect(() => {
+    API.getHistory(token).then((res) => {
+      if (res) {
+        // setHistory(res.history);
+      } else {
+        setHistory([]);
+      }
+    
+    });
+    return ()=>{
+      setHistory([])
+    }
+  }, []);
   return (
     <div className="UserProfile">
       <div className="UserProfile-Infor">

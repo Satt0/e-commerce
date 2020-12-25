@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {Button} from 'react-bootstrap';
+import itemsAction from 'store/action/itemsAction'
 export default function Item({ id, item }) {
   //input quantity
   const inputRef = useRef(null);
@@ -17,7 +18,7 @@ export default function Item({ id, item }) {
       inputRef.current.value >= 1
     ) {
       dispatch({
-        type: "changeQuantity",
+        type: itemsAction.changeQuantity,
         payload: { _id: item._id, quantity: Number(inputRef.current.value) },
       });
     } else {
@@ -26,7 +27,7 @@ export default function Item({ id, item }) {
     }
   }
   function deleteFromCart() {
-    dispatch({ type: "addToCart", payload: {_id:item._id }});
+    dispatch({ type: itemsAction.addToCart, payload: {_id:item._id }});
   }
   return (
     <div className="Cart-List-Item">

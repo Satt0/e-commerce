@@ -1,12 +1,14 @@
 import React, { useState ,useRef} from "react";
-//
-// import Button from "./Button";
-// import Search from "./Search";
-// import NavLinks from "./NavLinks";
+
 import "./NavBar.scss";
-import {Link} from 'react-router-dom'
+
 import {useSelector,useDispatch} from 'react-redux'
-import {Form,Nav,NavDropdown,FormControl,Button,Navbar,Spinner} from 'react-bootstrap'
+import {Form,Nav,
+  // NavDropdown,
+  
+  FormControl,Button,Navbar,
+  // Spinner
+} from 'react-bootstrap'
 import CartCounter from './smallerComponents/CartCounter'
 import { useLocation ,useHistory} from "react-router-dom";
 const NavBar = () => {
@@ -37,11 +39,11 @@ const NavBar = () => {
 
 
 <div className="NavBar-container">
-<Navbar bg="light" expand="lg">
+<Navbar bg="light" expand="md">
   <Navbar.Brand style={{cursor:'pointer'}}  onClick={()=>{url.push('/')}}>Webshop-by-Tan</Navbar.Brand>
   <Navbar.Toggle aria-controls="basic-navbar-nav" />
   <Navbar.Collapse id="basic-navbar-nav">
-    <Nav className="mr-auto">
+    <Nav className="ml-auto">
       <Nav.Link onClick={()=>{url.push('/cart')}}> <CartCounter count={count}/></Nav.Link>
       <Nav.Link  onClick={()=>{url.push('/user')}}>{status||"loading"}</Nav.Link>
       {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">

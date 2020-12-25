@@ -1,9 +1,8 @@
 @import "./helper/variables";
 @import "./helper//placeholders";
-@import './helper//animations';
+@import "./helper//animations";
 html {
-  
-  a{
+  a {
     text-decoration: none !important;
   }
   overflow: scroll;
@@ -12,12 +11,11 @@ html {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-
-   
   }
-  button:focus {outline:0;}
+  button:focus {
+    outline: 0;
+  }
 
-  
   input[type="color"],
   input[type="date"],
   input[type="datetime"],
@@ -37,23 +35,19 @@ html {
     font-size: 16px !important;
   }
 }
-*{
-  padding:0;
-  margin:0;
+* {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 .App {
-  position: relative;
+  position: static;
 
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  
   .main {
     @extend %setting;
 
     display: flex;
-  
+
     flex-direction: row;
 
     .SidePanel {
@@ -68,7 +62,7 @@ html {
       @extend %setting;
       overflow: hidden;
       height: 100vh;
-      background-color: rgb(87, 172, 163);
+      background-color: rgb(164, 170, 169);
       // background-image: url("https://img.zing.vn/gn/images/data/000Thang12014/000/T4_1_1920x1200.jpg");
       background-position: right;
       background-repeat: no-repeat;
@@ -87,3 +81,4 @@ html {
     }
   }
 }
+

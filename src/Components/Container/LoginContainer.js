@@ -11,7 +11,7 @@ export default function LoginContainer() {
   }
   
   return (
-    <div className="Login-Container">
+    <div className={loggedIn!=="in"?"Login-Container":"Login-Container user-in"}>
       {loggedIn!==null?loggedIn==="in" ? <Login /> : <LoginUI onClose={onClose} />:''}
     </div>
   );

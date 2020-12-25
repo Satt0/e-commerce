@@ -63,11 +63,11 @@ const API = {
     }).then((res) => res.json());
   },
   async getInfor(id) {
-    return await fetch(`${url}/user/userid`, {method:"POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({id:id})
-  
-  }).then((res) => {
+    return await fetch(`${url}/user/userid`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: id }),
+    }).then((res) => {
       if (res.ok) {
         return res.json();
       } else {
@@ -75,18 +75,13 @@ const API = {
     });
   },
   async logOut(id) {
-    return await fetch(`${url}/user/logout`, 
-    {
+    return await fetch(`${url}/user/logout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-      
       },
       body: JSON.stringify({ id: id }),
-    }
-    
-    
-    ).then((res) => {
+    }).then((res) => {
       if (res.ok) {
         return res.json();
       } else {
@@ -105,15 +100,18 @@ const API = {
       if (res.ok) {
         return res.json();
       } else {
+        return {result:false}
       }
     });
   },
 
-  async getHistory(userId) {
+  async getHistory(token) {
     return await fetch(`${url}/user/history`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: userId }),
+      headers: { "Content-Type": "application/json" ,
+        authorization:`Bearer ${token}`
+    },
+     
     }).then((res) => {
       if (res.ok) {
         return res.json();

@@ -1,12 +1,12 @@
-import React from "react";
-import { useSelector, useDispatch} from "react-redux";
+import React,{useState,useEffect} from "react";
+import { useSelector} from "react-redux";
 import ItemList from "./ItemList/ItemList";
-
+import SkeletonLoading from 'Components/SkeletonLoading/SkeletonLoading'
 import Fuse from "fuse.js";
 import "./Items.scss";
 
 const Items = () => {
-  const dispatch = useDispatch()
+    const [text,setText]=useState('Loading')
   const view = useSelector((state) => state.sort.view);
   const keyword = useSelector((state) => state.sort.sort);
   const db = useSelector((state) => state.items);
@@ -32,7 +32,14 @@ const Items = () => {
     data = fuse.search(keyword).map(e=>e.item);
  
   }
-
+useEffect(()=>{
+   const a= setTimeout(()=>{
+     if(data.length===0)
+     {
+      setText("Not Found!")
+     }
+   },6000)
+},[data])
   return (
     <div className="Items">
       {data.length === 0 ? (
@@ -43,7 +50,7 @@ const Items = () => {
             textShadow: "1px 1px 5px black",
           }}
         >
-          NULL!
+          {text}
         </h2>
       ) : (
         data.map((e) => <ItemList key={e._id} item={e} />)

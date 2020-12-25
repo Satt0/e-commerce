@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MainInfor from './MainInfor'
+import itemsAction from 'store/action/itemsAction'
 export default function ItemList(props) {
   const dispatch = useDispatch();
   const [add, setAdd] = useState(false);
@@ -13,7 +14,7 @@ export default function ItemList(props) {
     
    
        dispatch({
-        type: "addToCart",
+        type: itemsAction.addToCart,
         payload: {
           _id: props.item._id,
          
@@ -26,9 +27,7 @@ export default function ItemList(props) {
     <div className="ItemList">
         <MainInfor addToCart={addToCart} props={props} isAdded={isAdded>=0?0:1}/>
 
-      {/* <div className={isAdded !== -1 ? "addedToCart add" : "addedToCart"}>
-        <h4>{isAdded !== -1 ? "Added" : "Removed"}</h4>
-      </div> */}
+      
     </div>
   );
 }

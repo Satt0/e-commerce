@@ -1,5 +1,6 @@
 import React, { useState ,useRef,useEffect} from "react";
-import API from "../../../API";
+import API from "API";
+import userAction from 'store/action/userAction'
 import { useDispatch } from "react-redux";
 import {Form,Button} from 'react-bootstrap'
 export default function SignIn({sign}) {
@@ -22,7 +23,7 @@ export default function SignIn({sign}) {
         if (res.result === true) {
           localStorage.setItem('refreshToken',res.refreshToken);
           dispatch({
-            type: "logIn",
+            type: userAction.logIn,
             payload: { name: res.name, money: res.money,id:res.id, token:res.token,refresh:res.refreshToken },
           });
         } else {

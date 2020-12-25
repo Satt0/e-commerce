@@ -3,19 +3,19 @@ import './HistoryItem.scss'
 import { useSelector } from "react-redux";
 export default function HistoryItem({history:{infor:{date}},data}) {
     const [hidden,setHidden]=useState(true);
-    const items=useSelector(state=>state.items);
-    
+    // const items=useSelector(state=>state.items);
+    console.log(data);
     const [datas,setData]=useState([])
-    useEffect(()=>{
-        if(data.length>0)
-      {  const temp=data.map(e=>{
-            const found=items.find(item=>item._id===e._id);
+    // useEffect(()=>{
+    //     if(data.length>0)
+    //   {  const temp=data.map(e=>{
+    //         const found=items.find(item=>item._id===e._id);
            
-            return {...e,name:found.name,price:found.price}
-        })
-        setData(temp)}
+    //         return {...e,name:found.name,price:found.price}
+    //     })
+    //     setData(temp)}
         
-    },[data,items])
+    // },[data,items])
     return (
         <div className="HistoryItem">
             <div className="HistoryItem-Dropdown" onClick={()=>{setHidden(!hidden)}}>
