@@ -1,58 +1,62 @@
-@import "../../../../App.scss";
-%temp {
-  animation: borderanimate 1.7s infinite;
-  transform: scale(1.1);
-}
+
+@import 'App.scss';
 
 .Items {
-  display: flex;
-  overflow: scroll;
-  flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  align-content: flex-start;
+ 
+  @include displayFlex(row,flex-start,flex-start,wrap);
+  height: 100vh;
+  width:100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   font-family: $fontItem;
   font-size: 15px;
-
-  // @media only screen and (orientation: portrait) {
-  //   justify-content: -around;
-  // }
+  background-color: rgb(164, 170, 169);
+  
 
   .ItemList {
     position: relative;
     width:15vw;
-    margin-right: 2px;
+   margin:10px;
     max-width: 200px;
     min-width: 150px;
     height:280px;
   
-    @media only screen and (max-width:500px){
-      width:30vw;
-      margin:2.5px;
+    @media only screen and (max-width:550px){
+      width:33vw;
+      margin:20px;
     }
-    @media only screen and (max-width:475px){
+    @media only screen and (max-width:540px){
       width:45vw;
-      margin:3px;
+      margin:12px;
     }
+    @media only screen and (max-width:480px){
+      width:45vw;
+      margin:6px;
+    }
+    @media only screen and (max-width:360px){
+      width:43vw;
+      margin:2px;
+    }
+  
   
     border: none;
     .main-infor {
       
       background-color: white;
-      padding: 0;
-      box-sizing: border-box;
+     
       margin: 5px;
-      text-align: center;
+      
       height:100%;
       width:100%;
       // height: 156px;
       // width: 100px;
       position: relative;
       background-color: #fffafa;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: flex-start;
+      // align-items: center;
+      @include displayFlex(column,center,center,nowrap);
       color: rgb(59, 6, 6);
       .price {
         color: rgb(34, 218, 34);
@@ -74,10 +78,10 @@
           position: relative;
           width:100%;
           height: 100%;
-          background-position: center;
-          background-size: cover;
-          background-repeat: no-repeat;
-          
+          // background-position: center;
+          // background-size: cover;
+          // background-repeat: no-repeat;
+          @extend %bg;
     
         }
       }

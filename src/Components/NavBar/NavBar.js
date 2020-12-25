@@ -17,7 +17,7 @@ const NavBar = () => {
   const dispatch=useDispatch()
   const location = useLocation();
   const url=useHistory()
-  const [show, toggle] = useState(false);
+  // const [show, toggle] = useState(false);
  
   const onSubmit=(e)=>{
     e.preventDefault()

@@ -72,12 +72,17 @@ export default function SignIn({sign}) {
   <Form.Group controlId="formBasicPassword">
     <Form.Label>Password</Form.Label>
     <Form.Control ref={password} type="password" placeholder="Password" />
+   
   </Form.Group>
   
+
   <Button variant="primary" type="submit">
     Submit
   </Button>
 </Form>
+  
+  
+  
   <h5>{state}</h5>
 
 

@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { useSelector} from "react-redux";
 import ItemList from "./ItemList/ItemList";
-import SkeletonLoading from 'Components/SkeletonLoading/SkeletonLoading'
+// import SkeletonLoading from 'Components/SkeletonLoading/SkeletonLoading'
 import Fuse from "fuse.js";
 import "./Items.scss";
 

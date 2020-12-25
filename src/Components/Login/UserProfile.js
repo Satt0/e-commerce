@@ -33,7 +33,7 @@ export default function UserProfile() {
     return ()=>{
       setHistory([])
     }
-  }, []);
+  }, [token]);
   return (
     <div className="UserProfile">
       <div className="UserProfile-Infor">
@@ -46,7 +46,7 @@ export default function UserProfile() {
           </button> */}
           <Button variant="success" onClick={onLogout}>  Log out</Button>
         </div>
-        <div className="UserProfile-Infor-History">
+        {/* <div className="UserProfile-Infor-History">
           <h3 className="title">Transaction History.</h3>
           <ul>
             {history ? (
@@ -60,6 +60,7 @@ export default function UserProfile() {
             )}
           </ul>
         </div>
+       */}
       </div>
     </div>
   );

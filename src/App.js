@@ -19,8 +19,7 @@ const App = () => {
   const dispatch = useDispatch();
 
 
-  // const cart = useSelector((state) => state.cart);
-  // const status = useSelector((state) => state.transaction.state);
+  
   useEffect(() => {
     API.getAll().then((res) => {
       dispatch({

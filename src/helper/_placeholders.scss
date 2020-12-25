@@ -4,6 +4,19 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+@mixin displayFlex($dir, $ver, $hoz, $wr) {
+  display:flex;
+  flex-direction: $dir;
+  align-content: $ver;
+ justify-content: $hoz;
+ flex-wrap: $wr;
+ align-items: $ver;
+}
+%bg{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 %setting {
   padding: 0;
   margin: 0;

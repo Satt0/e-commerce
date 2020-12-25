@@ -7,20 +7,24 @@ import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 import IconButton from "@material-ui/core/IconButton";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useSelector, useDispatch } from "react-redux";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "auto",
     maxWidth: 360,
+    
     backgroundColor: theme.palette.background.paper,
-  },
-  landscape: {
-    display: "flex",
+    [theme.breakpoints.down('sm')]: {
+      display: "flex",
+      maxWidth:'none',
     flexDirection: "row",
     flexWrap: "no-wrap",
-    overflow: "scroll",
-  },
+    overflowX: "scroll",
+    scrollbarWidth:'auto',
+    
+    
+    }
+  }
 }));
 
 export default function CheckboxList() {
@@ -35,7 +39,6 @@ export default function CheckboxList() {
     // { tag: "custom", name: "custom" },
   ];
   // const items = useSelector((state) => state.items);
-  const matches = useMediaQuery("(orientation:portrait)");
 
   const classes = useStyles();
 
@@ -47,7 +50,7 @@ export default function CheckboxList() {
   };
 
   return (
-    <List className={!matches ? classes.root : classes.landscape}>
+    <List className={classes.root}>
       {tag.map((value, index) => {
         const labelId = `checkbox-list-label-${value.name}`;
 

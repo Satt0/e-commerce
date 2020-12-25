@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import {Button} from 'react-bootstrap'
-import {useSelector,useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
+import ulti from 'ultilities/ulti'
 export default function DisplayInfor({data}) {
     const [state,setState]=useState({});
     
@@ -22,7 +23,7 @@ const Data=(data)=>{
   }
     return <div className="Data">
         <h1>name: {data.data.name}</h1>
-        <h3>price: {data.data.price}</h3>
+        <h3>price: {ulti.currencyConvert(data.data.price) + ' VND'}</h3>
         <h3>quantity: {data.data.quantity}</h3>
         <Button onClick={click} variant={data.data.cart?"danger":"primary"}>{data.data.cart?"Remove from Cart":"Add to Cart"}</Button>
     </div>

@@ -2,8 +2,12 @@
 import React,{useState} from 'react'
 import {Button} from "react-bootstrap";
 import {Link} from 'react-router-dom'
+import { makeStyles } from "@material-ui/core/styles";
 
 import ulti from 'ultilities/ulti'
+const useStyles=makeStyles((theme)=>{
+  
+})
 export default function MainInfor({props,addToCart,isAdded}) {
 
   

@@ -5,7 +5,7 @@ html {
   a {
     text-decoration: none !important;
   }
-  overflow: scroll;
+  
   input,
   button {
     -webkit-appearance: none;
@@ -42,43 +42,13 @@ html {
 }
 .App {
   position: static;
-
-  .main {
-    @extend %setting;
-
-    display: flex;
-
-    flex-direction: row;
-
-    .SidePanel {
-      width: 10vw;
-      min-width: 100px;
-      @extend %setting;
-
-      height: 100vh;
-    }
-    .Items {
-      width: 100%;
-      @extend %setting;
-      overflow: hidden;
-      height: 100vh;
-      background-color: rgb(164, 170, 169);
-      // background-image: url("https://img.zing.vn/gn/images/data/000Thang12014/000/T4_1_1920x1200.jpg");
-      background-position: right;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    @media only screen and (orientation: portrait) {
-      flex-direction: column;
-      .SidePanel {
-        height: 10vh;
-        width: 100%;
-      }
-      .Items {
-        height: 90vh;
-        width: 100%;
-      }
-    }
-  }
+  
+  
 }
 
+// *::-webkit-scrollbar {
+//   display: none;
+// }
+// * {
+//   scrollbar-width: none;
+// }
