@@ -1,25 +1,24 @@
-import React, { useEffect } from "react";
+import React, {useEffect} from "react";
 import NavBar from "./Components/NavBar/NavBar";
 import "./App.scss";
 import LoginContainer from "./Components/Container/LoginContainer";
 import HomeContainer from "./Components/Container/HomeContainer";
 import CartContainer from "./Components/Container/CartContainer";
-import { useSelector, useDispatch } from "react-redux";
-import { url } from "API";
+import {useDispatch, useSelector} from "react-redux";
+import {url} from "API";
 import "bootstrap/dist/css/bootstrap.min.css";
-import itemsAction from 'store/action/itemsAction'
-import userAction from 'store/action/userAction'
-import socketIOClient from "socket.io-client";
+import itemsAction from "store/action/itemsAction";
+import userAction from "store/action/userAction";
 import API from "./API";
-import Helmet from 'react-helmet'
-import { Switch, Route } from "react-router-dom";
+import Helmet from "react-helmet";
+import {Route, Switch} from "react-router-dom";
+import NotFound from "Components/NotFound/NotFound";
+import ItemViewer from "Components/ItemViewer/ItemViewer";
 //use socket.io to update items in real time.
 const ENDPOINT = url; //socket.io endpoint, same as api endpoint.
 const App = () => {
   const dispatch = useDispatch();
 
-
-  
   useEffect(() => {
     API.getAll().then((res) => {
       dispatch({
@@ -34,21 +33,24 @@ const App = () => {
   const key = useSelector((state) => state.user.refresh);
   const status = useSelector((state) => state.user.loggedIn);
 
-  useEffect(() => {
-    //socket.io implementation, updates items based on transacton status(redux state)
-    const socket = socketIOClient(ENDPOINT);
-    
-    // if (status === "success") {
-    //   socket.emit("update", cart);
-    // }
+  // useEffect(() => {
+  //   //socket.io implementation, updates items based on transacton status(redux state)
+  //   const socket = socketIOClient(ENDPOINT);
 
-    socket.on("updateItem", (msg) => {
-     console.log(msg);
-    });
+  //   // if (status === "success") {
+  //   //   socket.emit("update", cart);
+  //   // }
 
-    return () => socket.disconnect();
-  }, []);
+  //   socket.on("updateItem", (msg) => {
+  //    console.log(msg);
+  //   });
 
+  //   return () => socket.disconnect();
+  // }, []);
+
+
+  
+// regenerate JWT after a period of 28 mins
   useEffect(() => {
     let a = null;
     if (key) {
@@ -56,14 +58,13 @@ const App = () => {
         API.getInfor(key).then((res) => {
           if (res.token) {
             if (status !== "out") {
-              
               dispatch({
                 type: userAction.logIn,
                 payload: {
                   name: res.user.name,
                   money: res.user.money,
                   token: res.token,
-                  id:res.user.id,
+                  id: res.user.id,
                   refresh: key,
                 },
               });
@@ -82,7 +83,7 @@ const App = () => {
       clearInterval(a);
     };
   }, [key, status, dispatch]);
-
+// get user infor onload
   useEffect(() => {
     const refresh = localStorage.getItem("refreshToken");
     if (refresh) {
@@ -96,7 +97,7 @@ const App = () => {
                 name: res.user.name,
                 money: res.user.money,
                 token: res.token,
-                id:res.user.id,
+                id: res.user.id,
                 refresh: key,
               },
             });
@@ -117,23 +118,36 @@ const App = () => {
   return (
     <div className="App">
       <Helmet>
-      <meta name="description" content="Shoping electronics, accessories, ultitilities" />
-          <meta name="theme-color" content="#008f68" />
+        <meta
+          name="description"
+          content="Shoping electronics, accessories, ultitilities"
+        />
+        <meta name="theme-color" content="#008f68" />
       </Helmet>
       <NavBar />
-      {/* {currentview} */}
 
       <Switch>
-        <Route path="/cart">
+        <Route strict  path='/cart'>
           <CartContainer />
         </Route>
-        <Route path="/user">
+        <Route exact path="/user">
           <LoginContainer />;
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <HomeContainer />
         </Route>
+        <Route strict path="/item/">
+          <ItemViewer />
+        </Route>
+
+        <Route path="/">
+          <NotFound />
+        </Route>
       </Switch>
+      {/* <AdSense.Google
+  client='ca-pub-7301220330128784'
+  slot='7806394673'
+/> */}
     </div>
   );
 };

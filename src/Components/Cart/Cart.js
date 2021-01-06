@@ -1,12 +1,33 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import Item from "./Item";
+
 import API from "API";
-import "./Cart.scss";
-import Timer from "./Timer";
-import { Button } from "react-bootstrap";
+import Confirm from "./Confirm";
+import ItemCart from "./SubComponents/ItemCart";
+import Counter from "./SubComponents/Counter";
 import { useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
+
+import { makeStyles } from "@material-ui/core/styles";
+const useStyle = makeStyles((theme) => ({
+  root: {
+    minHeight: "400px",
+    display: "flex",
+    flexWrap: "nowrap",
+    height: "94vh",
+    width: "100%",
+    backgroundColor: "gray",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      position: "relative",
+
+      minHeight: 600,
+    },
+  },
+}));
+
 export default function Cart() {
+  const style = useStyle();
   const url = useHistory();
   const cart = useSelector((state) => state.items.filter((e) => e.cart));
   const user = useSelector((state) => state.user.loggedIn);
@@ -16,16 +37,19 @@ export default function Cart() {
 
   const dispatch = useDispatch();
 
-  async function makeDeal() {
+   async function makeDeal() {
     if (user !== "in") {
       url.push("/user");
     } else {
       if (cart.length > 0) {
-        API.transaction(cart, token).then((res) => {
+       return API.transaction(cart, token).then((res) => {
+          
           if (res.result === false) {
-            dispatch({ type: "logOut" });
+            dispatch({ type: "user/logOut" });
+            return {ok:false}
           } else {
             console.log(res);
+            return {ok:true}
           }
         });
       }
@@ -33,19 +57,16 @@ export default function Cart() {
   }
 
   return (
-    <div className="Cart">
-      <div className="Cart-List">
-        {cart.length > 0 ? (
-          cart.map((e, i) => <Item key={e._id} item={e} />)
-        ) : (
-          <h3 className="Cart-List-Text">Cart is Empty!!!</h3>
-        )}
-      </div>
-      <div className="Cart-Payment">
-        <Button onClick={makeDeal} variant="primary" size="lg" block disabled={cart.length<=0}>
-          Buy
-        </Button>
-      </div>
+    <div className={style.root}>
+      
+        
+        
+
+        
+          <ItemCart cart={cart} />
+          <Counter action={makeDeal}/>
+        
+      
     </div>
   );
 }

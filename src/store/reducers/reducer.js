@@ -1,11 +1,12 @@
 import { combineReducers } from "redux";
 
 const initState = {
-  items: [],
+  items: [{name:null}],
 
   sort: {
     view: "all",
     sort: "",
+    specific:""
   },
 
   cart: [],
@@ -53,7 +54,14 @@ const items = (state = initState.items, action) => {
         ? { ...e, thisQuantity: action.payload.quantity }
         : e
     );
-  } else {
+  } 
+  else if (action.type==='items/changeCartQuantity'){
+    const newState=state.map(e=>(e._id===action.payload._id?({...e,thisQuantity:action.payload.quantity}):e))
+    
+    return newState
+  }
+  
+  else {
     return state;
   }
 };
@@ -86,13 +94,14 @@ const user = (state = initState.user, action) => {
 };
 
 const sort = (state = initState.sort, action) => {
-  if (action.type === "setSort") {
+  if (action.type === "sort/setSort") {
     return {
       ...state,
       view: action.payload.view,
+      specific:action.payload.specific||"",
       sort: "",
     };
-  } else if (action.type === "searchItem") {
+  } else if (action.type === "sort/searchItem") {
     return { ...state, view: "custom", sort: action.payload };
   } else {
     return { ...state };

@@ -1,7 +1,11 @@
 @import "./helper/variables";
 @import "./helper//placeholders";
 @import "./helper//animations";
+
+@import url('https://fonts.googleapis.com/css2?family=Jaldi&display=swap');
+
 html {
+
   a {
     text-decoration: none !important;
   }
@@ -42,6 +46,8 @@ html {
 }
 .App {
   position: static;
+  background-color: whitesmoke;
+
   
   
 }
