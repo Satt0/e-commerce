@@ -4,29 +4,29 @@ import SignIn from "Components/LoginUIComponents/SignIn";
 export default function LoginUI() {
   // const dispatch = useDispatch();
   const [state, setState] = useState("signin");
-  const change = (e) => {
-    setState(e.target.id);
+  const change = (value) => {
+    return () => {
+      setState(value);
+    };
   };
 
   return (
     <div className="LoginUI">
       <div className="change">
         <div
-          id="signin"
           className={state === "signin" ? "selected" : ""}
-          onClick={change}
+          onClick={change("signin")}
         >
           Sign In
         </div>
         <div
-          id="signup"
           className={state === "signup" ? "selected" : ""}
-          onClick={change}
+          onClick={change("signup")}
         >
           Sign Up
         </div>
       </div>
-       <SignIn sign={state}/> 
+      <SignIn sign={state} />
     </div>
   );
 }

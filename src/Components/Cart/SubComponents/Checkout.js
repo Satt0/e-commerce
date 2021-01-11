@@ -11,37 +11,30 @@ const useStyles=makeStyles((theme)=>({
         justifyContent:"center",
         alignItems:"center",
         [theme.breakpoints.down('sm')]:{
-            height:'100%'
+            height:'100%',
+            width:'50%',
         }
     },
-    buttonContainer:{
-        width:'30%',
-        // height:200,
-        minWidth:250,
-        overflow:"visible",
-        textAlign:'center',
+    // buttonContainer:{
+      
+     
+    //     // minWidth:100,
+    //     overflow:"visible",
+      
         
-    //     '& > * ':{
-    // width:'80%',
-
-    //         height:'50%',
-    //         maxHeight:60,
-             
-           
-            
-    //     }
-    }
+  
+    // }
 }))
 export default function Checkout({action}) {
-    const url=useHistory()
+    // const url=useHistory()
     const styles=useStyles()
 
     return (
         <div className={styles.root}>
-            <div className={styles.buttonContainer}>
+            {/* <div className={styles.buttonContainer}> */}
 
             <Checker action={action} />
-            </div>
+            {/* </div> */}
         </div>
     )
 }

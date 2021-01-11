@@ -1,5 +1,4 @@
-// const url = "http://localhost:4000";
-// const url='http://192.168.1.8:4000'
+
 const url = false
   ? "https://lit-stream-93368.herokuapp.com"
   : "http://localhost:4000";
@@ -111,7 +110,7 @@ const API = {
       headers: { "Content-Type": "application/json" ,
         authorization:`Bearer ${token}`
     },
-     
+
     }).then((res) => {
       if (res.ok) {
         return res.json();

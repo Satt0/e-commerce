@@ -1,5 +1,6 @@
 export default {
     currencyConvert:(str)=>{
+     
         str=str.toString()
 
         let index = str.length;
@@ -33,5 +34,41 @@ export default {
     }
     return str;
 
+    },
+    reduceTotal:(arr,type)=>{
+      console.log(type,arr);
+      if(arr.length>1)
+      {
+        if(type==='count')
+        {
+          return arr.reduce((a,c)=>{
+            if(typeof a!== 'number')
+            {
+              a=a.thisQuantity
+            }
+            return a + c.thisQuantity;
+          })
+        }
+        else{
+          return arr.reduce((a,c)=>{
+            if(typeof a!== 'number')
+            {
+              a=a.thisQuantity * a.price
+            }
+            return a + c.thisQuantity*c.price;
+          })
+        }
+      }
+      else{
+          if(type==='count')
+          {
+            return arr[0].thisQuantity;
+          }
+          else{
+            return arr[0].thisQuantity*arr[0].price
+          }
+      }
+
+    
     }
 }

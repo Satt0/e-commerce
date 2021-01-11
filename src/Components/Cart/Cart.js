@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import userAction from "store/action/userAction";
 import API from "API";
-import Confirm from "./Confirm";
+// import Confirm from "./Confirm";
 import ItemCart from "./SubComponents/ItemCart";
 import Counter from "./SubComponents/Counter";
 import { useHistory } from "react-router-dom";
-import { Switch, Route } from "react-router-dom";
+// import { Switch, Route } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 const useStyle = makeStyles((theme) => ({
@@ -37,36 +37,32 @@ export default function Cart() {
 
   const dispatch = useDispatch();
 
-   async function makeDeal() {
+  async function makeDeal() {
     if (user !== "in") {
       url.push("/user");
+      return { ok: false };
     } else {
       if (cart.length > 0) {
-       return API.transaction(cart, token).then((res) => {
-          
+        return API.transaction(cart, token).then((res) => {
           if (res.result === false) {
-            dispatch({ type: "user/logOut" });
-            return {ok:false}
+            dispatch({ type: userAction.logOut });
+            return { ok: false };
           } else {
             console.log(res);
-            return {ok:true}
+            return { ok: true };
           }
         });
+      }
+      else{
+        return {ok:'empty'}
       }
     }
   }
 
   return (
     <div className={style.root}>
-      
-        
-        
-
-        
-          <ItemCart cart={cart} />
-          <Counter action={makeDeal}/>
-        
-      
+      <ItemCart cart={cart} />
+      <Counter action={makeDeal} />
     </div>
   );
 }

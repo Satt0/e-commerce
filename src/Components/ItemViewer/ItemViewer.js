@@ -28,7 +28,7 @@ export default function ItemViewer() {
             return ()=>{
                 setItem({})
             }
-    },[items])
+    },[items,id,url])
   
     return (
         <div className="ItemViewer">

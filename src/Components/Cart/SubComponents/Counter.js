@@ -15,6 +15,7 @@ const useStyle=makeStyles((theme)=>({
     flexDirection:'column',
     justifyContent:"center",
     alignItems:"center",
+    overflow:'hidden',
     [theme.breakpoints.down('sm')]:{
         
        flexDirection:"row",

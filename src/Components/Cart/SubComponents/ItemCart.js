@@ -25,14 +25,14 @@ const useStyle=makeStyles((theme)=>({
        height:'85%'
    },
    '& > .cart-item-container':{
-       margin:theme.spacing(1),
+       margin:theme.spacing(3),
      
        
        width:'95%',
        display:'flex',
        justifyContent:"center",
-       backgroundColor:'white',
-       boxShadow: `rgba(0, 0, 0, 0.24) 0px 3px 8px`
+       
+       
    }
    
    }

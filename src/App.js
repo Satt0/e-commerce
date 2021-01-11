@@ -1,17 +1,17 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import NavBar from "./Components/NavBar/NavBar";
 import "./App.scss";
 import LoginContainer from "./Components/Container/LoginContainer";
 import HomeContainer from "./Components/Container/HomeContainer";
 import CartContainer from "./Components/Container/CartContainer";
-import {useDispatch, useSelector} from "react-redux";
-import {url} from "API";
+import { useDispatch, useSelector } from "react-redux";
+import { url } from "API";
 import "bootstrap/dist/css/bootstrap.min.css";
 import itemsAction from "store/action/itemsAction";
 import userAction from "store/action/userAction";
 import API from "./API";
 import Helmet from "react-helmet";
-import {Route, Switch} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import NotFound from "Components/NotFound/NotFound";
 import ItemViewer from "Components/ItemViewer/ItemViewer";
 //use socket.io to update items in real time.
@@ -32,7 +32,7 @@ const App = () => {
 
   const key = useSelector((state) => state.user.refresh);
   const status = useSelector((state) => state.user.loggedIn);
-
+  const token = useSelector((state) => state.user.JWT);
   // useEffect(() => {
   //   //socket.io implementation, updates items based on transacton status(redux state)
   //   const socket = socketIOClient(ENDPOINT);
@@ -48,9 +48,7 @@ const App = () => {
   //   return () => socket.disconnect();
   // }, []);
 
-
-  
-// regenerate JWT after a period of 28 mins
+  // regenerate JWT after a period of 28 mins
   useEffect(() => {
     let a = null;
     if (key) {
@@ -83,14 +81,14 @@ const App = () => {
       clearInterval(a);
     };
   }, [key, status, dispatch]);
-// get user infor onload
+  // get user infor onload
   useEffect(() => {
     const refresh = localStorage.getItem("refreshToken");
     if (refresh) {
       API.getInfor(refresh).then((res) => {
         if (res.token) {
           if (status !== "out") {
-            console.log(res.user.id);
+            console.log();
             dispatch({
               type: userAction.logIn,
               payload: {
@@ -98,7 +96,7 @@ const App = () => {
                 money: res.user.money,
                 token: res.token,
                 id: res.user.id,
-                refresh: key,
+                refresh: refresh,
               },
             });
           } else {
@@ -114,7 +112,18 @@ const App = () => {
       dispatch({ type: userAction.logOut });
     }
   }, []);
-
+  useEffect(() => {
+    if (token) {
+      API.getHistory(token).then((res) => {
+        if (res) {
+          dispatch({
+            type: "history/updateHistory",
+            payload: { history: res.history },
+          });
+        }
+      });
+    }
+  }, [token]);
   return (
     <div className="App">
       <Helmet>
@@ -127,7 +136,7 @@ const App = () => {
       <NavBar />
 
       <Switch>
-        <Route strict  path='/cart'>
+        <Route strict path="/cart">
           <CartContainer />
         </Route>
         <Route exact path="/user">

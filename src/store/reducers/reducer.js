@@ -18,6 +18,7 @@ const initState = {
     JWT: null,
     refresh: null,
   },
+  history:[]
 };
 
 const items = (state = initState.items, action) => {
@@ -107,9 +108,18 @@ const sort = (state = initState.sort, action) => {
     return { ...state };
   }
 };
+const history=(state=initState.history,action)=>{
+  
+  if(action.type==='history/updateHistory'){
+    return [...action.payload.history]
+  }
+
+
+  return state
+}
 export default combineReducers({
   items: items,
-
+history:history,
   user: user,
   sort: sort,
 });

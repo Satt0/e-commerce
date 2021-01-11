@@ -106,9 +106,8 @@ export default function CheckboxList() {
     changeSpecific("all");
   }, [catergory]);
   useEffect(() => {
-    console.log("updating sort!!!!!!!!");
     handleToggle(catergory, specific);
-  }, [catergory, specific]);
+  }, [catergory, specific,handleToggle]);
   return (
     <div className={classes.root}>
      

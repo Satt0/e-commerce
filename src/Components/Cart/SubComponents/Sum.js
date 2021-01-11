@@ -13,7 +13,8 @@ const useStyles=makeStyles((theme)=>({
         alignItems:"center",
         
         [theme.breakpoints.down('sm')]:{
-            height:'100%'
+            
+            width:'60%'
         }
         
     },
@@ -25,7 +26,7 @@ const useStyles=makeStyles((theme)=>({
             fontSize:'2rem',
             margin:0,
             [theme.breakpoints.down('sm')]:{
-                fontSize:'1.3rem'
+                fontSize:'1rem'
             }
         }
         
