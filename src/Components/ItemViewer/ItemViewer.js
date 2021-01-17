@@ -1,19 +1,17 @@
 import React,{useState,useEffect} from 'react'
-import {useLocation,useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import {useSelector} from 'react-redux'
-
 import ulti from 'ultilities/ulti'
 import Helmet from 'react-helmet'
 import './ItemViewer.scss'
 import DisplayImage from './DisplayImage'
 import DisplayInfor from './DisplayInfor'
-export default function ItemViewer() {
-    const id=useLocation().pathname.split('/')[2];
+export default function ItemViewer({match}) {    
     const items=useSelector(state=>state.items)
     const url=useHistory()
     const [item,setItem]=useState({})
     useEffect(()=>{
-            const getter=items.find(e=>(ulti.generateURL(e.name)===id));
+            const getter=items.find(e=>(ulti.generateURL(e.name)===match.params.id));
           
             if(getter)
             {
@@ -28,7 +26,7 @@ export default function ItemViewer() {
             return ()=>{
                 setItem({})
             }
-    },[items,id,url])
+    },[items,url,match.params.id])
   
     return (
         <div className="ItemViewer">

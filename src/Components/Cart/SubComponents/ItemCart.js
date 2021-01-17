@@ -1,6 +1,6 @@
 import React from 'react'
 import {makeStyles} from '@material-ui/core/styles'
-import MainInfor from 'Components/Container/HomeComponents/Items/ItemList/MainInfor'
+import MainInfor from 'Components/Page/HomeComponents/Items/ItemList/MainInfor'
 const useStyle=makeStyles((theme)=>({
    root:{
     height:'100%',

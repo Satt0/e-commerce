@@ -57,7 +57,7 @@ const NavBar = () => {
       <Nav.Link  onClick={()=>{url.push('/user')}}>{status||"loading"}</Nav.Link>
       
     </Nav>
-   {location.pathname==='/'? <Form inline onSubmit={onSubmit}>
+   {location.pathname==='/'? <Form inline className="justify-content-center flex-nowrap" onSubmit={onSubmit}>
       <FormControl ref={inputRef} type="text" placeholder="Search"  className="mr-sm-2" />
       <Button variant="outline-success" type="submit" value="Submit">Search</Button>
     </Form>:<></>}

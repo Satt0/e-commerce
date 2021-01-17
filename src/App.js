@@ -1,128 +1,126 @@
 import React, { useEffect } from "react";
 import NavBar from "./Components/NavBar/NavBar";
 import "./App.scss";
-import LoginContainer from "./Components/Container/LoginContainer";
-import HomeContainer from "./Components/Container/HomeContainer";
-import CartContainer from "./Components/Container/CartContainer";
-import { useDispatch, useSelector } from "react-redux";
+import LoginContainer from "Components/Page/LoginContainer";
+import HomeContainer from "Components/Page/HomeContainer";
+import CartContainer from "Components/Page/CartContainer";
+// import { useDispatch, useSelector } from "react-redux";
 // import { url } from "API";
 import "bootstrap/dist/css/bootstrap.min.css";
-import itemsAction from "store/action/itemsAction";
-import userAction from "store/action/userAction";
-import API from "./API";
+// import itemsAction from "store/action/itemsAction";
+// import userAction from "store/action/userAction";
+// import API from "API";
 import Helmet from "react-helmet";
 import { Route, Switch } from "react-router-dom";
 import NotFound from "Components/NotFound/NotFound";
 import ItemViewer from "Components/ItemViewer/ItemViewer";
-//use socket.io to update items in real time.
 // const ENDPOINT = url; //socket.io endpoint, same as api endpoint.
 const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    API.getAll().then((res) => {
-      dispatch({
-        type: itemsAction.updateItems,
-        payload: res.map((e) => {
-          return { ...e, cart: false, thisQuantity: 1 };
-        }),
-      });
-    });
-  }, [dispatch]);
-
-  const key = useSelector((state) => state.user.refresh);
-  const status = useSelector((state) => state.user.loggedIn);
-  const token = useSelector((state) => state.user.JWT);
   // useEffect(() => {
-  //   //socket.io implementation, updates items based on transacton status(redux state)
-  //   const socket = socketIOClient(ENDPOINT);
-
-  //   // if (status === "success") {
-  //   //   socket.emit("update", cart);
-  //   // }
-
-  //   socket.on("updateItem", (msg) => {
-  //    console.log(msg);
+  //   API.getAll().then((res) => {
+  //     dispatch({
+  //       type: itemsAction.updateItems,
+  //       payload: res.map((e) => {
+  //         return { ...e, cart: false, thisQuantity: 1 };
+  //       }),
+  //     });
   //   });
+  // }, [dispatch]);
 
-  //   return () => socket.disconnect();
-  // }, []);
+  // const key = useSelector((state) => state.user.refresh);
+  // const status = useSelector((state) => state.user.loggedIn);
+  // const token = useSelector((state) => state.user.JWT);
+  // // useEffect(() => {
+  // //   const socket = socketIOClient(ENDPOINT);
 
-  // regenerate JWT after a period of 28 mins
-  useEffect(() => {
-    let a = null;
-    if (key) {
-      a = setInterval(() => {
-        API.getInfor(key).then((res) => {
-          if (res.token) {
-            if (status !== "out") {
-              dispatch({
-                type: userAction.logIn,
-                payload: {
-                  name: res.user.name,
-                  money: res.user.money,
-                  token: res.token,
-                  id: res.user.id,
-                  refresh: key,
-                },
-              });
-            }
-          } else {
-            dispatch({ type: userAction.logOut });
-            localStorage.clear("refreshToken");
-            clearInterval(a);
-          }
-        });
-      }, 280000);
-    } else {
-      clearInterval(a);
-    }
-    return () => {
-      clearInterval(a);
-    };
-  }, [key, status, dispatch]);
-  // get user infor onload
-  useEffect(() => {
-    const refresh = localStorage.getItem("refreshToken");
-    if (refresh) {
-      API.getInfor(refresh).then((res) => {
-        if (res.token) {
-          if (status !== "out") {
-            dispatch({
-              type: userAction.logIn,
-              payload: {
-                name: res.user.name,
-                money: res.user.money,
-                token: res.token,
-                id: res.user.id,
-                refresh: refresh,
-              },
-            });
-          } else {
-            dispatch({ type: userAction.logOut });
-          }
-        } else {
-          dispatch({ type: userAction.logOut });
+  // //   // if (status === "success") {
+  // //   //   socket.emit("update", cart);
+  // //   // }
 
-          localStorage.clear("refreshToken");
-        }
-      });
-    } else {
-      dispatch({ type: userAction.logOut });
-    }
-  }, [dispatch,status]);
-  useEffect(() => {
-    if (token) {
-      API.getHistory(token).then((res) => {
-        if (res) {
-          dispatch({
-            type: "history/updateHistory",
-            payload: { history: res.history },
-          });
-        }
-      });
-    }
-  }, [token,dispatch]);
+  // //   socket.on("updateItem", (msg) => {
+  // //    console.log(msg);
+  // //   });
+
+  // //   return () => socket.disconnect();
+  // // }, []);
+
+  // // regenerate JWT after a period of 28 mins
+  // useEffect(() => {
+  //   let a = null;
+  //   if (key) {
+  //     a = setInterval(() => {
+  //       API.getInfor(key).then((res) => {
+  //         if (res.token) {
+  //           if (status !== "out") {
+  //             dispatch({
+  //               type: userAction.logIn,
+  //               payload: {
+  //                 name: res.user.name,
+  //                 money: res.user.money,
+  //                 token: res.token,
+  //                 id: res.user.id,
+  //                 refresh: key,
+  //               },
+  //             });
+  //           }
+  //         } else {
+  //           dispatch({ type: userAction.logOut });
+  //           localStorage.clear("refreshToken");
+  //           clearInterval(a);
+  //         }
+  //       });
+  //     }, 280000);
+  //   } else {
+  //     clearInterval(a);
+  //   }
+  //   return () => {
+  //     clearInterval(a);
+  //   };
+  // }, [key, status, dispatch]);
+  // // get user infor onload
+  // useEffect(() => {
+  //   const refresh = localStorage.getItem("refreshToken");
+  //   if (refresh) {
+  //     API.getInfor(refresh).then((res) => {
+  //       if (res.token) {
+  //         if (status !== "out") {
+  //           dispatch({
+  //             type: userAction.logIn,
+  //             payload: {
+  //               name: res.user.name,
+  //               money: res.user.money,
+  //               token: res.token,
+  //               id: res.user.id,
+  //               refresh: refresh,
+  //             },
+  //           });
+  //         } else {
+  //           dispatch({ type: userAction.logOut });
+  //         }
+  //       } else {
+  //         dispatch({ type: userAction.logOut });
+
+  //         localStorage.clear("refreshToken");
+  //       }
+  //     });
+  //   } else {
+  //     dispatch({ type: userAction.logOut });
+  //   }
+  // }, [dispatch,status]);
+  // useEffect(() => {
+  //   if (token) {
+  //     API.getHistory(token).then((res) => {
+  //       if (res) {
+  //         dispatch({
+  //           type: "history/updateHistory",
+  //           payload: { history: res.history },
+  //         });
+  //       }
+  //     });
+  //   }
+  // }, [token,dispatch]);
   return (
     <div className="App">
       <Helmet>
@@ -144,8 +142,8 @@ const App = () => {
         <Route exact path="/">
           <HomeContainer />
         </Route>
-        <Route strict path="/item/">
-          <ItemViewer />
+        <Route exact path="/item/:id" component={ItemViewer}>
+         
         </Route>
 
         <Route path="/">
