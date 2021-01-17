@@ -77,9 +77,7 @@ export default function CheckboxList() {
   const classes = useStyles();
   const sort=useSelector(state=>state.sort.view)
   const dispatch = useDispatch();
-  const handleToggle = (value, specific = "") => {
-    dispatch({ type: "sort/setSort", payload: { view: value, specific: specific } });
-  };
+ 
   const handlechange = (type) => {
     if (type === "catergory") {
       return (e) => {
@@ -106,8 +104,11 @@ export default function CheckboxList() {
     changeSpecific("all");
   }, [catergory]);
   useEffect(() => {
+    const handleToggle = (value, specific = "") => {
+      dispatch({ type: "sort/setSort", payload: { view: value, specific: specific } });
+    };
     handleToggle(catergory, specific);
-  }, [catergory, specific,handleToggle]);
+  }, [catergory, specific,dispatch]);
   return (
     <div className={classes.root}>
      

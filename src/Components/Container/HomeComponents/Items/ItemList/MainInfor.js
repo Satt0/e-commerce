@@ -12,28 +12,25 @@ const useStyles = makeStyles((theme) => ({
   root:  ({
     display: "flex",
     width: "100%",
-    // maxWidth:200,
+    
     height: "100%",
     backgroundColor: 'whitesmoke',
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
     "&.cart": {
+      width:'70% !important' ,
       flexDirection: "row",
-      justifyContent: "space-around",
+      justifyContent: "flex-start",
+      [theme.breakpoints.down('sm')]:{
+        width:'100%'
+      },
     },
   }),
   imgContainer: {
-    // width: "100%",
-
-    // minWidth: 150,
+    
     maxWidth: 200,
-    // height: "60%",
-    // overflow: "hidden",
-    // "&.cart": {
-    //   width: "auto",
-    //   height: "auto",
-    // },
+    
   },
 
   img: {
@@ -46,9 +43,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
   },
   textWrapper: {
-    // flexGrow:2,
 
-    // fontFamily: 'Helvetica Neue,Helvetica,Arial,文泉驛正黑,WenQuanYi Zen Hei,Hiragino Sans GB,儷黑 Pro,LiHei Pro,Heiti TC,微軟正黑體,Microsoft JhengHei UI,Microsoft JhengHei,sans-serif',
 
     width: "100%",
     textAlign: "center",
@@ -128,7 +123,7 @@ export default function MainInfor({ props, isAdded, type }) {
                 ? props.item.name.substring(0, 10).trim() + "..."
                 : props.item.name}
             </Typography>
-           {type!=='cart'? <Typography align='center' component="subtitle1" style={{color:'green'}}>
+           {type!=='cart'? <Typography align='center' style={{color:'green'}}>
               {ulti.currencyConvert(props.item.price)}
             </Typography>:<></>}
           </Container>

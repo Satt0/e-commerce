@@ -1,5 +1,6 @@
 import React,{useEffect} from 'react';
 import clsx from 'clsx';
+import {useSelector} from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { green } from '@material-ui/core/colors';
@@ -8,6 +9,8 @@ import Fab from '@material-ui/core/Fab';
 import CheckIcon from '@material-ui/icons/Check';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Timer from './Timer'
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -25,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonSuccess: {
     backgroundColor: green[500],
+    whiteSpace:'nowrap',
     '&:hover': {
       backgroundColor: green[700],
     },
@@ -44,24 +48,35 @@ const useStyles = makeStyles((theme) => ({
     marginTop: -12,
     marginLeft: -12,
   },
+  typography:{
+    padding:15
+  }
 }));
 
 export default function Checker({action}) {
   const classes = useStyles();
   const [loading, setLoading] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
-  // const timer = React.useRef();
 
   const buttonClassname = clsx({
     [classes.buttonSuccess]: success,
   });
 
-  // React.useEffect(() => {
-  //   return () => {
-  //     clearTimeout(timer.current);
-  //   };
-  // }, []);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const checker=useSelector(state=>state.items).some(e=>e.cart)
+  const handleClick = (event) => {
+   if(!success && !checker)
+   {
+    setAnchorEl(event.currentTarget);
+   }
+  };
 
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
   useEffect(()=>{
       const a=setTimeout(()=>{
         setSuccess(false);
@@ -106,7 +121,7 @@ export default function Checker({action}) {
         </Fab>
         {loading && <CircularProgress size={68} className={classes.fabProgress} />}
       </div>
-      <div className={classes.wrapper}>
+      <div className={classes.wrapper}  aria-describedby={id} onClick={handleClick}>
         <Button
           variant="contained"
           color="primary"
@@ -118,6 +133,22 @@ export default function Checker({action}) {
         </Button>
         {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
       </div>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Typography className={classes.typography}>The Cart is EMPTY!!!</Typography>
+      </Popover>
     </div>
   );
 }

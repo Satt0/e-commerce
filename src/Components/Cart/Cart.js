@@ -31,9 +31,9 @@ export default function Cart() {
   const url = useHistory();
   const cart = useSelector((state) => state.items.filter((e) => e.cart));
   const user = useSelector((state) => state.user.loggedIn);
-  const userId = useSelector((state) => state.user.id);
+  // const userId = useSelector((state) => state.user.id);
   const token = useSelector((state) => state.user.JWT);
-  const refresh = useSelector((state) => state.user.refresh);
+  // const refresh = useSelector((state) => state.user.refresh);
 
   const dispatch = useDispatch();
 

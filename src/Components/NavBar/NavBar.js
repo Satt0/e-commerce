@@ -35,9 +35,9 @@ const NavBar = () => {
   const user=useSelector(state=>state.user)
   let status;
   switch(user.loggedIn){
-    case null:status='please wait';break;
     case 'in':status='User: '+user.name;break;
     case "out":status="login";break;
+    default: status='please wait';break;
   }
 
   return (

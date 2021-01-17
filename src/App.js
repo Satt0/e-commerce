@@ -5,7 +5,7 @@ import LoginContainer from "./Components/Container/LoginContainer";
 import HomeContainer from "./Components/Container/HomeContainer";
 import CartContainer from "./Components/Container/CartContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { url } from "API";
+// import { url } from "API";
 import "bootstrap/dist/css/bootstrap.min.css";
 import itemsAction from "store/action/itemsAction";
 import userAction from "store/action/userAction";
@@ -15,7 +15,7 @@ import { Route, Switch } from "react-router-dom";
 import NotFound from "Components/NotFound/NotFound";
 import ItemViewer from "Components/ItemViewer/ItemViewer";
 //use socket.io to update items in real time.
-const ENDPOINT = url; //socket.io endpoint, same as api endpoint.
+// const ENDPOINT = url; //socket.io endpoint, same as api endpoint.
 const App = () => {
   const dispatch = useDispatch();
 
@@ -88,7 +88,6 @@ const App = () => {
       API.getInfor(refresh).then((res) => {
         if (res.token) {
           if (status !== "out") {
-            console.log();
             dispatch({
               type: userAction.logIn,
               payload: {
@@ -111,7 +110,7 @@ const App = () => {
     } else {
       dispatch({ type: userAction.logOut });
     }
-  }, []);
+  }, [dispatch,status]);
   useEffect(() => {
     if (token) {
       API.getHistory(token).then((res) => {
@@ -123,7 +122,7 @@ const App = () => {
         }
       });
     }
-  }, [token]);
+  }, [token,dispatch]);
   return (
     <div className="App">
       <Helmet>

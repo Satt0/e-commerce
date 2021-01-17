@@ -1,8 +1,8 @@
-import React, { useState,useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+// import { useDispatch } from "react-redux";
 import MainInfor from './MainInfor'
 import Skeleton,{SkeletonTheme} from 'react-loading-skeleton';
-import itemsAction from 'store/action/itemsAction'
+// import itemsAction from 'store/action/itemsAction'
 import {makeStyles} from '@material-ui/styles'
 const useStyles=makeStyles((theme)=>({
   //inside grid item, no specific width and height...
@@ -14,8 +14,8 @@ const useStyles=makeStyles((theme)=>({
   }
 }))
 export default function ItemList(props) {
-  const dispatch = useDispatch();
-  const [add, setAdd] = useState(false);
+  // const dispatch = useDispatch();
+  // const [add, setAdd] = useState(false);
   const styles=useStyles()
  
 
